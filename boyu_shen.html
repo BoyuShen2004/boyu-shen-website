@@ -50,15 +50,18 @@
           {children}
         </button>
       );
-      const Input = ({ className = "", ...props }) => (
+
+      // IMPORTANT: default type="text" + min width to prevent tiny boxes
+      const Input = ({ className = "", type = "text", ...props }) => (
         <input
-          className={`w-full px-3 py-2 rounded-xl border border-neutral-300 outline-none focus:ring-2 focus:ring-neutral-400 ${className}`}
+          type={type}
+          className={`w-full min-w-[12rem] px-3 py-2 rounded-xl border border-neutral-300 outline-none focus:ring-2 focus:ring-neutral-400 ${className}`}
           {...props}
         />
       );
       const Textarea = ({ className = "", ...props }) => (
         <textarea
-          className={`w-full px-3 py-2 rounded-xl border border-neutral-300 outline-none focus:ring-2 focus:ring-neutral-400 ${className}`}
+          className={`w-full min-w-[12rem] px-3 py-2 rounded-xl border border-neutral-300 outline-none focus:ring-2 focus:ring-neutral-400 ${className}`}
           {...props}
         />
       );
@@ -114,7 +117,6 @@
       );
 
       // ===== Types / defaults =====
-      // Use flexible free-text range fields that work on resumes (e.g., "Sep 2021", "May 2025" or "Present").
       const emptyEducation = () => ({ startMonth: "", endMonth: "", program: "", courses: "" });
       const emptyProject = () => ({ title: "", description: "", link: "" });
       const emptyPublication = () => ({ title: "", venue: "", year: "", link: "" });
@@ -144,8 +146,6 @@
       const STORAGE_KEY = "personal-website-prototype-v1";
 
       // ===== View-only mode detection =====
-      // Visitors can view-only by default using a URL flag: ?view=1  (or ?mode=view)
-      // Creators can force edit mode with: ?edit=1 (or ?mode=edit)
       const url = new URL(window.location.href);
       const VIEW_ONLY = url.searchParams.get('view') === '1' || url.searchParams.get('mode') === 'view';
       const FORCE_EDIT = url.searchParams.get('edit') === '1' || url.searchParams.get('mode') === 'edit';
@@ -170,7 +170,7 @@
           }
         }, []);
 
-        // Save to localStorage on change (still allowed in view-only, but there are no inputs visible)
+        // Save to localStorage on change
         useEffect(() => {
           try {
             localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
@@ -227,7 +227,7 @@
 
         const resetToDefault = () => setData(DEFAULT_DATA);
 
-        // Diagnostics (rudimentary runtime tests)
+        // Diagnostics
         const diagnostics = useMemo(() => {
           const tests = [];
           tests.push({ name: 'React present', pass: !!(window.React && window.ReactDOM) });
@@ -254,16 +254,52 @@
           </label>
         );
 
-        // Edit Forms
+        // Array helpers
+        const updateArrayItem = (key, idx, partial) => {
+          setData(prev => ({
+            ...prev,
+            [key]: prev[key].map((item, i) => (i === idx ? { ...item, ...partial } : item)),
+          }));
+        };
+        const addArrayItem = (key, value) => setData(prev => ({ ...prev, [key]: [...prev[key], value] }));
+        const removeArrayItem = (key, idx) => setData(prev => ({ ...prev, [key]: prev[key].filter((_, i) => i !== idx) }));
+
+        // ===== Editors =====
         const EducationEditor = () => (
           <div className="flex flex-col gap-3">
             {data.education.map((ed, idx) => (
               <Card key={idx}>
                 <CardContent className="grid grid-cols-12 gap-3 items-end">
-                  <div className="col-span-3"><LabeledInput label="Start Time" placeholder="e.g., Sep 2021" value={ed.startMonth} onChange={e => updateArrayItem("education", idx, { startMonth: e.target.value })} /></div>
-                  <div className="col-span-3"><LabeledInput label="End Time" placeholder="e.g., May 2025 or Present" value={ed.endMonth} onChange={e => updateArrayItem("education", idx, { endMonth: e.target.value })} /></div>
-                  <div className="col-span-6"><LabeledInput label="Degree / Program" value={ed.program} onChange={e => updateArrayItem("education", idx, { program: e.target.value })} /></div>
-                  <div className="col-span-12"><LabeledTextarea label="Courses (comma-separated)" value={ed.courses} onChange={e => updateArrayItem("education", idx, { courses: e.target.value })} /></div>
+                  <div className="col-span-12 md:col-span-6">
+                    <LabeledInput
+                      label="Start Time"
+                      placeholder="e.g., Sep 2021"
+                      value={ed.startMonth}
+                      onChange={e => updateArrayItem("education", idx, { startMonth: e.target.value })}
+                    />
+                  </div>
+                  <div className="col-span-12 md:col-span-6">
+                    <LabeledInput
+                      label="End Time"
+                      placeholder="e.g., May 2025 or Present"
+                      value={ed.endMonth}
+                      onChange={e => updateArrayItem("education", idx, { endMonth: e.target.value })}
+                    />
+                  </div>
+                  <div className="col-span-12">
+                    <LabeledInput
+                      label="Degree / Program"
+                      value={ed.program}
+                      onChange={e => updateArrayItem("education", idx, { program: e.target.value })}
+                    />
+                  </div>
+                  <div className="col-span-12">
+                    <LabeledTextarea
+                      label="Courses (comma-separated)"
+                      value={ed.courses}
+                      onChange={e => updateArrayItem("education", idx, { courses: e.target.value })}
+                    />
+                  </div>
                   <div className="col-span-12 flex justify-end">
                     <Button className="text-red-600 border-red-200" onClick={() => removeArrayItem("education", idx)}><Trash2 className="inline size-4 mr-1"/>Remove</Button>
                   </div>
@@ -279,9 +315,15 @@
             {data.projects.map((p, idx) => (
               <Card key={idx}>
                 <CardContent className="grid grid-cols-12 gap-3 items-end">
-                  <div className="col-span-5"><LabeledInput label="Title" value={p.title} onChange={e => updateArrayItem("projects", idx, { title: e.target.value })} /></div>
-                  <div className="col-span-5"><LabeledInput label="Link (optional)" value={p.link} onChange={e => updateArrayItem("projects", idx, { link: e.target.value })} /></div>
-                  <div className="col-span-12"><LabeledTextarea label="Description" value={p.description} onChange={e => updateArrayItem("projects", idx, { description: e.target.value })} /></div>
+                  <div className="col-span-12 md:col-span-6">
+                    <LabeledInput label="Title" value={p.title} onChange={e => updateArrayItem("projects", idx, { title: e.target.value })} />
+                  </div>
+                  <div className="col-span-12 md:col-span-6">
+                    <LabeledInput label="Link (optional)" type="url" value={p.link} onChange={e => updateArrayItem("projects", idx, { link: e.target.value })} />
+                  </div>
+                  <div className="col-span-12">
+                    <LabeledTextarea label="Description" value={p.description} onChange={e => updateArrayItem("projects", idx, { description: e.target.value })} />
+                  </div>
                   <div className="col-span-12 flex justify-end">
                     <Button className="text-red-600 border-red-200" onClick={() => removeArrayItem("projects", idx)}><Trash2 className="inline size-4 mr-1"/>Remove</Button>
                   </div>
@@ -297,10 +339,18 @@
             {data.publications.map((p, idx) => (
               <Card key={idx}>
                 <CardContent className="grid grid-cols-12 gap-3 items-end">
-                  <div className="col-span-6"><LabeledInput label="Title" value={p.title} onChange={e => updateArrayItem("publications", idx, { title: e.target.value })} /></div>
-                  <div className="col-span-3"><LabeledInput label="Venue" value={p.venue} onChange={e => updateArrayItem("publications", idx, { venue: e.target.value })} /></div>
-                  <div className="col-span-3"><LabeledInput label="Year" value={p.year} onChange={e => updateArrayItem("publications", idx, { year: e.target.value })} /></div>
-                  <div className="col-span-12"><LabeledInput label="Link (optional)" value={p.link} onChange={e => updateArrayItem("publications", idx, { link: e.target.value })} /></div>
+                  <div className="col-span-12">
+                    <LabeledInput label="Title" value={p.title} onChange={e => updateArrayItem("publications", idx, { title: e.target.value })} />
+                  </div>
+                  <div className="col-span-12 md:col-span-6 lg:col-span-4">
+                    <LabeledInput label="Venue" value={p.venue} onChange={e => updateArrayItem("publications", idx, { venue: e.target.value })} />
+                  </div>
+                  <div className="col-span-12 md:col-span-6 lg:col-span-2">
+                    <LabeledInput label="Year" value={p.year} onChange={e => updateArrayItem("publications", idx, { year: e.target.value })} />
+                  </div>
+                  <div className="col-span-12">
+                    <LabeledInput label="Link (optional)" type="url" value={p.link} onChange={e => updateArrayItem("publications", idx, { link: e.target.value })} />
+                  </div>
                   <div className="col-span-12 flex justify-end">
                     <Button className="text-red-600 border-red-200" onClick={() => removeArrayItem("publications", idx)}><Trash2 className="inline size-4 mr-1"/>Remove</Button>
                   </div>
@@ -316,8 +366,12 @@
             {data.links.map((l, idx) => (
               <Card key={idx}>
                 <CardContent className="grid grid-cols-12 gap-3 items-end">
-                  <div className="col-span-5"><LabeledInput label="Label" value={l.label} onChange={e => updateArrayItem("links", idx, { label: e.target.value })} /></div>
-                  <div className="col-span-7"><LabeledInput label="URL" value={l.url} onChange={e => updateArrayItem("links", idx, { url: e.target.value })} /></div>
+                  <div className="col-span-12 md:col-span-5">
+                    <LabeledInput label="Label" value={l.label} onChange={e => updateArrayItem("links", idx, { label: e.target.value })} />
+                  </div>
+                  <div className="col-span-12 md:col-span-7">
+                    <LabeledInput label="URL" type="url" value={l.url} onChange={e => updateArrayItem("links", idx, { url: e.target.value })} />
+                  </div>
                   <div className="col-span-12 flex justify-end">
                     <Button className="text-red-600 border-red-200" onClick={() => removeArrayItem("links", idx)}><Trash2 className="inline size-4 mr-1"/>Remove</Button>
                   </div>
@@ -327,24 +381,6 @@
             <Button onClick={() => addArrayItem("links", emptyLink())}><Plus className="inline size-4 mr-1"/>Add Link</Button>
           </div>
         );
-
-        // Array helpers
-        const updateArrayItem = (key, idx, partial) => {
-          setData(prev => ({
-            ...prev,
-            [key]: prev[key].map((item, i) => (i === idx ? { ...item, ...partial } : item)),
-          }));
-        };
-        const addArrayItem = (key, value) => setData(prev => ({ ...prev, [key]: [...prev[key], value] }));
-        const removeArrayItem = (key, idx) => setData(prev => ({ ...prev, [key]: prev[key].filter((_, i) => i !== idx) }));
-
-        // Utilities
-        const formatRange = (start, end) => {
-          if (!start && !end) return '';
-          if (start && !end) return start;
-          if (!start && end) return end;
-          return `${start} – ${end}`; // en dash between
-        };
 
         // Render
         return (
@@ -407,7 +443,7 @@
                             <LabeledInput label="Nickname (optional)" value={data.nickname} onChange={e => setData(d => ({ ...d, nickname: e.target.value }))} />
                           </div>
                           <div className="col-span-12">
-                            <LabeledTextarea label="Self‑Introduction" value={data.selfIntro} onChange={e => setData(d => ({ ...d, selfIntro: e.target.value }))} />
+                            <LabeledTextarea label="Self-Introduction" value={data.selfIntro} onChange={e => setData(d => ({ ...d, selfIntro: e.target.value }))} />
                           </div>
                         </CardContent>
                       </Card>
@@ -496,7 +532,7 @@
               </main>
 
               <footer className="max-w-6xl mx-auto px-6 pb-8 text-center text-sm text-neutral-600">
-                Built with ❤️ — your data auto‑saves to your browser (localStorage). Export JSON to back up.
+                Built with ❤️ — your data auto-saves to your browser (localStorage). Export JSON to back up.
               </footer>
             </div>
           </div>
