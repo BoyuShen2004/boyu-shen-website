@@ -465,4 +465,135 @@
                       <CardContent>
                         <ul className="space-y-2">
                           {diagnostics.map((t, i) => (
-                            <li key={i} className="flex items-center justify-between
+                            <li key={i} className="flex items-center justify-between p-2 rounded-lg border border-neutral-200">
+                              <div>
+                                <div className="font-medium">{t.name}</div>
+                              </div>
+                              <span className={`text-sm font-semibold ${t.pass ? 'text-green-700' : 'text-red-700'}`}>{t.pass ? 'PASS' : 'FAIL'}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </CardContent>
+                    </Card>
+                  )}
+                </section>
+              </main>
+
+              <footer className="max-w-6xl mx-auto px-6 pb-8 text-center text-sm text-neutral-600">
+                Built with ❤️ — your data auto-saves to your browser (localStorage). Export JSON to back up.
+              </footer>
+            </div>
+          </div>
+        );
+      }
+
+      // ===== Preview Components =====
+      function ProfilePreview({ data }) {
+        const formatRange = (s, e) => {
+          if (!s && !e) return '';
+          if (s && !e) return s;
+          if (!s && e) return e;
+          return `${s} – ${e}`;
+        };
+        return (
+          <Card>
+            <CardHeader title="Live Preview" />
+            <CardContent className="space-y-6">
+              <div className="flex items-start gap-4">
+                <div className="w-24 h-24 rounded-2xl overflow-hidden border border-neutral-300 bg-white">
+                  {data.profileImage ? (
+                    <img src={data.profileImage} alt="profile" className="w-full h-full object-cover" />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-neutral-400">No Image</div>
+                  )}
+                </div>
+                <div>
+                  <h2 className="text-2xl font-bold">{data.name}</h2>
+                  {data.nickname && <div className="text-neutral-600">AKA {data.nickname}</div>}
+                </div>
+              </div>
+
+              <section>
+                <Section title="About" />
+                <p className="mt-2 whitespace-pre-wrap leading-relaxed">{data.selfIntro}</p>
+              </section>
+
+              <section>
+                <Section title="Education" />
+                <ul className="mt-3 space-y-3">
+                  {data.education.map((ed) => (
+                    <li key={ed.id} className="p-3 rounded-xl border border-neutral-200">
+                      <div className="text-sm text-neutral-600">{formatRange(ed.startMonth, ed.endMonth)}</div>
+                      <div className="font-medium">{ed.program}</div>
+                      {ed.courses && (
+                        <div className="text-sm mt-1"><span className="text-neutral-600">Courses:</span> {ed.courses}</div>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </section>
+
+              <section>
+                <Section title="Projects" />
+                <ul className="mt-3 grid md:grid-cols-2 gap-3">
+                  {data.projects.map((p) => (
+                    <li key={p.id} className="p-4 rounded-xl border border-neutral-200">
+                      <div className="font-semibold">{p.title || "Untitled"}</div>
+                      <p className="text-sm mt-1 text-neutral-700 whitespace-pre-wrap">{p.description}</p>
+                      {p.link && (
+                        <a className="inline-flex items-center gap-1 text-sm mt-2 underline" href={p.link} target="_blank" rel="noreferrer">
+                          Visit
+                        </a>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </section>
+
+              <section>
+                <Section title="Publications" />
+                <ul className="mt-3 space-y-3">
+                  {data.publications.map((p) => (
+                    <li key={p.id} className="p-3 rounded-xl border border-neutral-200">
+                      <div className="font-medium">{p.title || "Untitled"}</div>
+                      <div className="text-sm text-neutral-700">{[p.venue, p.year].filter(Boolean).join(" · ")}</div>
+                      {p.link && (
+                        <a className="inline-flex items-center gap-1 text-sm mt-2 underline" href={p.link} target="_blank" rel="noreferrer">
+                          DOI / Link
+                        </a>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </section>
+
+              <section>
+                <Section title="Links" />
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {data.links.map((l) => (
+                    <a key={l.id} className="px-3 py-2 rounded-xl border border-neutral-200 hover:bg-neutral-50 inline-flex items-center gap-2" href={l.url} target="_blank" rel="noreferrer">
+                      <span>{l.label || l.url}</span>
+                    </a>
+                  ))}
+                </div>
+              </section>
+            </CardContent>
+          </Card>
+        );
+      }
+
+      function Section({ title }) {
+        return (
+          <div className="flex items-center gap-2">
+            <div className="w-1.5 h-6 rounded-full bg-neutral-800" />
+            <h3 className="text-lg font-semibold">{title}</h3>
+          </div>
+        );
+      }
+
+      // Mount
+      const root = ReactDOM.createRoot(document.getElementById('root'));
+      root.render(<PersonalWebsitePrototype />);
+    </script>
+  </body>
+</html>
