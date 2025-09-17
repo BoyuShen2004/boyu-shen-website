@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Name — Personal Website</title>
+  
+  <!--
+    Single-file, static, non-editable (front-end) personal website.
+    HOW TO USE:
+      1) Save this file as index.html in your repo or local folder.
+      2) Replace the two image URLs below (BACKGROUND_URL and PORTRAIT_URL) with your own.
+         If you store images in the same repo, use relative paths like ./img/bg.jpg ./img/me.jpg
+      3) Replace placeholder text (name, nickname, intro, education, projects, publications, links).
+      4) To publish on GitHub Pages: push index.html to a repo → Settings → Pages →
+         "Deploy from a branch" (e.g., main / root). Your site will appear at https://<username>.github.io/<repo>/
+  -->
+
+  <style>
+    :root {
+      --bg: #0f172a;      /* slate-900 */
+      --panel: rgba(255,255,255,.04);
+      --border: rgba(255,255,255,.10);
+      --text: #e2e8f0;    /* slate-200 */
+      --muted: #94a3b8;   /* slate-400 */
+      --accent: #38bdf8;  /* sky-400 */
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; color: var(--text); background: var(--bg);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+                   "Apple Color Emoji", "Segoe UI Emoji";
+      line-height: 1.6;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Top navigation */
+    .nav { position: sticky; top: 0; z-index: 20; backdrop-filter: blur(10px);
+           background: rgba(15,23,42,.65); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-links a { color: var(--text); opacity: .9; margin: 0 10px; font-size: 15px; }
+    .brand { font-weight: 700; letter-spacing: .3px; }
+
+    /* Hero with background image */
+    .hero { position: relative; min-height: 62vh; display: flex; align-items: center; justify-content: center;
+            background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1920&auto=format&fit=crop'); /* BACKGROUND_URL */
+            background-size: cover; background-position: center; }
+    .hero::after { content: ""; position: absolute; inset: 0; background:
+                   linear-gradient(180deg, rgba(15,23,42,.35) 0%, rgba(15,23,42,.85) 85%); }
+    .hero-content { position: relative; z-index: 1; max-width: 1100px; width: 100%; padding: 40px 24px; display: grid; grid-template-columns: 1fr; gap: 24px; }
+    .hero-row { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+    .portrait { width: 160px; height: 160px; border-radius: 9999px; object-fit: cover; border: 3px solid rgba(255,255,255,.9);
+                box-shadow: 0 14px 34px rgba(0,0,0,.45); background: #111827; }
+    h1 { margin: 0 0 6px; font-size: clamp(28px, 4vw, 44px); line-height: 1.15; }
+    .nickname { color: var(--muted); font-weight: 500; font-size: clamp(14px, 2.5vw, 18px); }
+    .tagline { margin-top: 6px; color: var(--muted); max-width: 70ch; }
+    .socials { display: flex; gap: 14px; align-items: center; margin-top: 10px; }
+    .icon { width: 22px; height: 22px; display: inline-block; vertical-align: middle; fill: currentColor; }
+
+    /* Sections */
+    .container { max-width: 1100px; margin: -40px auto 64px; padding: 0 24px; }
+    .section { margin-top: 24px; }
+    .card { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 24px; backdrop-filter: blur(6px);
+            box-shadow: 0 10px 26px rgba(0,0,0,.28); }
+    .section-title { margin: 0 0 14px; font-size: 20px; letter-spacing: .3px; }
+    .muted { color: var(--muted); }
+    .list { margin: 0; padding-left: 18px; }
+    .item-title { font-weight: 650; }
+    .badge { display: inline-block; font-size: 12px; color: #0b1220; background: var(--accent); border-radius: 999px; padding: 2px 8px; margin-left: 6px; }
+    .grid { display: grid; gap: 16px; }
+    @media (min-width: 860px) { .grid-2 { grid-template-columns: repeat(2,1fr); } }
+
+    /* Footer */
+    .footer { text-align: center; color: var(--muted); padding: 36px 16px; border-top: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+  <header class="nav" role="banner">
+    <div class="nav-inner">
+      <div class="brand">Your Name</div>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
+        <a href="#publications">Publications</a>
+        <a href="#links">Links</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" role="img" aria-label="Background image">
+    <div class="hero-content">
+      <div class="hero-row">
+        <img class="portrait" src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?q=80&w=512&auto=format&fit=crop" alt="Portrait of Your Name" />
+        <div>
+          <h1>YOUR NAME <span class="nickname">(Nickname)</span></h1>
+          <p class="tagline">Brief one‑line role or interest — e.g., Math & CS @ Boston College • Biomedical Image Analysis • RA @ Duchesne.</p>
+          <div class="socials" aria-label="Social links">
+            <a href="https://github.com/username" target="_blank" rel="noopener" aria-label="GitHub">
+              <!-- GitHub icon -->
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.02c-3.34.73-4.04-1.61-4.04-1.61-.55-1.41-1.36-1.79-1.36-1.79-1.12-.77.08-.76.08-.76 1.24.09 1.89 1.27 1.89 1.27 1.1 1.88 2.88 1.34 3.58 1.02.11-.8.43-1.34.78-1.65-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23.96-.27 1.98-.4 3-.4s2.04.13 3 .4c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.25 2.87.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.49 5.92.44.38.83 1.12.83 2.26v3.35c0 .32.22.69.83.58A12 12 0 0 0 12 .5Z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/username" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <!-- LinkedIn icon -->
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.13 1.44-2.13 2.93v5.67H9.35V9.75h3.41v1.46h.05c.47-.88 1.62-1.8 3.33-1.8 3.56 0 4.21 2.34 4.21 5.38v5.66ZM5.34 8.28a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.55V9.75h3.57v10.7ZM22.23 0H1.77C.79 0 0 .78 0 1.76v20.47C0 23.21.79 24 1.77 24h20.46c.98 0 1.77-.79 1.77-1.77V1.76C24 .78 23.21 0 22.23 0Z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="container" role="main">
+    <section id="about" class="card section" aria-labelledby="about-title">
+      <h2 id="about-title" class="section-title">About</h2>
+      <p>
+        Write a short self‑introduction here. For example: I am a Math & CS student at Boston College focusing on
+        biomedical image analysis and applied ML. I enjoy building tools for segmentation, teaching as an RA, and
+        collaborating across labs on open datasets.
+      </p>
+    </section>
+
+    <section id="education" class="card section" aria-labelledby="edu-title">
+      <h2 id="edu-title" class="section-title">Education</h2>
+      <ul class="list">
+        <li>
+          <span class="item-title">Boston College</span> — B.A. Mathematics & Computer Science
+          <span class="badge">2023–2026</span><br />
+          <span class="muted">Notable courses: Abstract Algebra, Machine Learning in Economics, Data Structures,
+          Probability, Linear Algebra.</span>
+        </li>
+        <li>
+          <span class="item-title">Exchange / Summer</span>
+          <span class="badge">Year</span><br />
+          <span class="muted">Brief detail about program, focus, or achievement.</span>
+        </li>
+      </ul>
+    </section>
+
+    <section id="projects" class="card section" aria-labelledby="projects-title">
+      <h2 id="projects-title" class="section-title">Projects</h2>
+      <div class="grid grid-2">
+        <article>
+          <h3 class="item-title">MitoHard Benchmark</h3>
+          <p class="muted">A benchmark for challenging 3D mitochondria instance segmentation in volume EM.
+             <a href="#">Repo</a> • <a href="#">Demo</a></p>
+        </article>
+        <article>
+          <h3 class="item-title">Shannon Switching Game (Web)</h3>
+          <p class="muted">An interactive JS game with modern UI and animations. <a href="#">Live</a> • <a href="#">Source</a></p>
+        </article>
+        <article>
+          <h3 class="item-title">nnUNet‑SDT Pipeline</h3>
+          <p class="muted">Training + inference workflow using skeleton distance transforms. <a href="#">Docs</a></p>
+        </article>
+        <article>
+          <h3 class="item-title">Course Tools</h3>
+          <p class="muted">Small teaching tools and visualizations for STAT/CS courses. <a href="#">Collection</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section id="publications" class="card section" aria-labelledby="pubs-title">
+      <h2 id="pubs-title" class="section-title">Publications</h2>
+      <ol class="list">
+        <li>
+          Lastname, Firstname; Coauthors. <em>Paper Title</em>. Venue, Year. <a href="#">PDF</a>
+        </li>
+        <li>
+          Lastname, Firstname; Coauthors. <em>Another Title</em>. Preprint, Year. <a href="#">arXiv</a>
+        </li>
+      </ol>
+    </section>
+
+    <section id="links" class="card section" aria-labelledby="links-title">
+      <h2 id="links-title" class="section-title">Links</h2>
+      <p>
+        Find me on <a href="https://github.com/username" target="_blank" rel="noopener">GitHub</a> and
+        <a href="https://www.linkedin.com/in/username" target="_blank" rel="noopener">LinkedIn</a>.
+        You can also reach me at <a href="mailto:you@example.com">you@example.com</a>.
+      </p>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <p>© 2025 Your Name. All rights reserved.</p>
+  </footer>
+
+  <!-- QUICK CUSTOMIZATION NOTES --------------------------------------------
+    • BACKGROUND IMAGE: change the .hero background-image URL near the top of <style>.
+    • PORTRAIT IMAGE: change the <img class="portrait" src="…"/> URL in the hero section.
+    • CONTENT: edit headings, paragraphs, lists for Education/Projects/Publications.
+    • COLORS: tweak CSS variables in :root if desired.
+  -------------------------------------------------------------------------- -->
+</body>
+</html>
