@@ -26,9 +26,8 @@
       --accent: #38bdf8;  /* sky-400 */
     }
     * { box-sizing: border-box; }
-    html { 
+    html {
       scroll-behavior: smooth;
-      scroll-padding-top: 80px;
     }
     body {
       margin: 0; color: var(--text); background: var(--bg);
@@ -64,10 +63,7 @@
 
     /* Sections */
     .container { max-width: 1100px; margin: -40px auto 64px; padding: 0 24px; }
-    .section { 
-      margin-top: 24px;
-      scroll-margin-top: 80px;
-    }
+    .section { margin-top: 24px; }
     .card { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 24px; backdrop-filter: blur(6px);
             box-shadow: 0 10px 26px rgba(0,0,0,.28); }
     .section-title { margin: 0 0 14px; font-size: 20px; letter-spacing: .3px; }
@@ -77,6 +73,15 @@
     .badge { display: inline-block; font-size: 12px; color: #0b1220; background: var(--accent); border-radius: 999px; padding: 2px 8px; margin-left: 6px; }
     .grid { display: grid; gap: 16px; }
     @media (min-width: 860px) { .grid-2 { grid-template-columns: repeat(2,1fr); } }
+
+    /* Anchor offset to account for sticky nav */
+    .anchor-offset {
+      position: relative;
+      top: -80px;       /* roughly navbar height – tweak if needed */
+      display: block;
+      height: 0;
+      visibility: hidden;
+    }
 
     /* Footer */
     .footer { text-align: center; color: var(--muted); padding: 36px 16px; border-top: 1px solid var(--border); }
@@ -101,7 +106,7 @@
       <div class="hero-row">
         <img class="portrait" src="portraitImage.jpg" alt="Portrait of Boyu Shen" />
         <div>
-          <h1>Boyu Shen <span class="nickname">(Ethan)</span></h1>
+          <h1>Boyu Shen 申博宇<span class="nickname">(Ethan)</span></h1>
           <p class="tagline">CS & Math @ Boston College • Biomedical Image Analysis • RA @ BC Donglai Wei Lab & MIT Ed Boyden Lab.</p>
           <div class="socials" aria-label="Social links">
             <a href="https://www.linkedin.com/in/boyu-shen-bb381026a" target="_blank" rel="noopener" aria-label="LinkedIn">
@@ -129,14 +134,16 @@
   </section>
 
   <main class="container" role="main">
-    <section id="about" class="card section" aria-labelledby="about-title">
+    <section class="card section" aria-labelledby="about-title">
+      <div id="about" class="anchor-offset" aria-hidden="true"></div>
       <h2 id="about-title" class="section-title">About</h2>
       <p>
         I am a CS & Math student at Boston College focusing on Computer Vision, Biomedical Image Analysis, and Applied Machine Learning.
       </p>
     </section>
 
-    <section id="education" class="card section" aria-labelledby="edu-title">
+    <section class="card section" aria-labelledby="edu-title">
+      <div id="education" class="anchor-offset" aria-hidden="true"></div>
       <h2 id="edu-title" class="section-title">Education</h2>
       <ul class="list">
         <li>
@@ -153,12 +160,14 @@
        </ul>
     </section>
 
-    <section id="projects" class="card section" aria-labelledby="projects-title">
+    <section class="card section" aria-labelledby="projects-title">
+      <div id="projects" class="anchor-offset" aria-hidden="true"></div>
       <h2 id="projects-title" class="section-title">Projects</h2>
       <div class="grid grid-2"></div>
     </section>
 
-    <section id="publications" class="card section" aria-labelledby="pubs-title">
+    <section class="card section" aria-labelledby="pubs-title">
+      <div id="publications" class="anchor-offset" aria-hidden="true"></div>
       <h2 id="pubs-title" class="section-title">Publications</h2>
       <ol class="list">
         <li>
@@ -171,7 +180,8 @@
       </ol>
     </section>
 
-    <section id="links" class="card section" aria-labelledby="links-title">
+    <section class="card section" aria-labelledby="links-title">
+      <div id="links" class="anchor-offset" aria-hidden="true"></div>
       <h2 id="links-title" class="section-title">Links</h2>
       <p>
         Find me on <a href="https://www.linkedin.com/in/boyu-shen-bb381026a" target="_blank" rel="noopener">LinkedIn</a>,
