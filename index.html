@@ -92,14 +92,19 @@
     .course-columns {
       columns: 2;
       column-gap: 40px;
-      margin-top: 4px;
+      margin: 4px 0 0;   /* remove bottom margin so spacing around hr is symmetric */
     }
 
     /* Small divider line */
     .sub-divider {
       border: 0;
       border-top: 1px solid var(--border);
-      margin: 6px 0 10px;
+      margin: 10px 0;    /* same space above and below both lines */
+    }
+
+    /* Coursework labels */
+    .coursework-label {
+      margin: 10px 0;
     }
 
     /* Anchor offset to account for sticky nav */
@@ -258,7 +263,7 @@
       <div id="coursework" class="anchor-offset" aria-hidden="true"></div>
       <h2 id="coursework-title" class="section-title">Coursework</h2>
       <hr class="sub-divider" />
-      <p class="muted"><span class="item-title">Undergraduate:</span></p>
+      <p class="muted coursework-label"><span class="item-title">Undergraduate:</span></p>
       <div class="muted">
         <p><span class="item-title">Computer Science:</span></p>
         <ul class="list course-columns">
@@ -302,7 +307,7 @@
       </div>
 
       <hr class="sub-divider" />
-      <p class="muted"><span class="item-title">Graduate:</span></p>
+      <p class="muted coursework-label"><span class="item-title">Graduate:</span></p>
     </section>
 
     <!-- Links -->
@@ -313,7 +318,7 @@
         Find me on <a href="https://www.linkedin.com/in/boyu-shen-bb381026a" target="_blank" rel="noopener">LinkedIn</a>,
         <a href="https://scholar.google.com/citations?hl=en&user=KE-7g1cAAAAJ" target="_blank" rel="noopener">Google Scholar</a>,
         and <a href="https://github.com/BoyuShen2004" target="_blank" rel="noopener">GitHub</a>.
-        You can also reach me at <a href="mailto:boyu.shen.2004@gmail.com">boyu.shen.2004@gmail.com</a>.
+        You can also reach me at [first_name].[last_name].2004@gmail.com (written this way to avoid webscrapers).
       </p>
     </section>
   </main>
