@@ -88,6 +88,13 @@
       font-size: 0.95rem;
     }
 
+    /* Coursework columns */
+    .course-columns {
+      columns: 2;
+      column-gap: 40px;
+      margin-top: 4px;
+    }
+
     /* Anchor offset to account for sticky nav */
     .anchor-offset {
       position: relative;
@@ -178,7 +185,7 @@
       </ul>
     </section>
 
-    <!-- Experience (moved below Education) -->
+    <!-- Experience -->
     <section class="card section" aria-labelledby="exp-title">
       <div id="experience" class="anchor-offset" aria-hidden="true"></div>
       <h2 id="exp-title" class="section-title">Experience</h2>
@@ -243,6 +250,49 @@
           — <a href="https://doi.org/10.1101/2025.11.12.687478" target="_blank" rel="noopener">bioRxiv</a>
         </li>
       </ol>
+    </section>
+
+    <!-- Coursework -->
+    <section class="card section" aria-labelledby="coursework-title">
+      <div id="coursework" class="anchor-offset" aria-hidden="true"></div>
+      <h2 id="coursework-title" class="section-title">Coursework</h2>
+      <div class="muted">
+        <p><span class="item-title">Computer Science:</span></p>
+        <ul class="list course-columns">
+          <li>Computer Systems</li>
+          <li>Data Science: Methods and Applications</li>
+          <li>Natural Language Processing</li>
+          <li>Databases</li>
+          <li>Software Engineering</li>
+          <li>Deep Learning</li>
+          <li>Algorithms</li>
+          <li>Computability and Computational Complexity</li>
+          <li>Generative AI: Mathematics and Applications</li>
+          <li>Biomedical Image Analysis</li>
+        </ul>
+
+        <p><span class="item-title">Mathematics:</span></p>
+        <ul class="list course-columns">
+          <li>Multivariable Calculus</li>
+          <li>Linear Algebra</li>
+          <li>Mathematical Foundations of Data Science</li>
+          <li>Differential Equations</li>
+          <li>Probability</li>
+          <li>Mathematical Statistics</li>
+          <li>Number Theory</li>
+          <li>Combinatorics</li>
+          <li>Advanced Data Analysis</li>
+          <li>Introduction to Abstract Algebra</li>
+          <li>Introduction to Analysis</li>
+        </ul>
+
+        <p><span class="item-title">Other related:</span></p>
+        <ul class="list course-columns">
+          <li>Econometric Methods</li>
+          <li>Machine Learning for Economics</li>
+          <li>Management Science</li>
+        </ul>
+      </div>
     </section>
 
     <!-- Links -->
