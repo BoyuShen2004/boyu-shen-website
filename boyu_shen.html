@@ -4,10 +4,6 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Boyu Shen — Personal Website</title>
-  
-  <!--
-    Single-file, static, non-editable (front-end) personal website.
-  -->
 
   <style>
     :root {
@@ -67,9 +63,9 @@
     .grid { display: grid; gap: 16px; }
     @media (min-width: 860px) { .grid-2 { grid-template-columns: repeat(2,1fr); } }
 
-    /* Experience-specific layout */
+    /* Experience layout (matches overall style; uses bullets + badge) */
     .exp-item {
-      margin-bottom: 18px;
+      margin-bottom: 14px;
     }
     .exp-header {
       display: flex;
@@ -78,23 +74,17 @@
       gap: 12px;
       flex-wrap: wrap;
     }
-    .exp-org {
-      font-weight: 650;
-    }
     .exp-date {
-      font-size: 13px;
-      color: var(--muted);
       white-space: nowrap;
     }
     .exp-role {
-      font-size: 14px;
       color: var(--muted);
       margin-top: 2px;
     }
     .exp-desc {
-      margin-top: 4px;
-      font-size: 14px;
       color: var(--muted);
+      margin-top: 2px;
+      font-size: 0.95rem;
     }
 
     /* Anchor offset to account for sticky nav */
@@ -163,44 +153,45 @@
       </p>
     </section>
 
-    <!-- Updated Experience section -->
+    <!-- Experience (now using bullets + consistent style) -->
     <section class="card section" aria-labelledby="exp-title">
       <div id="experience" class="anchor-offset" aria-hidden="true"></div>
       <h2 id="exp-title" class="section-title">Experience</h2>
+      <ul class="list">
+        <li class="exp-item">
+          <div class="exp-header">
+            <span class="item-title">
+              Massachusetts Institute of Technology, McGovern Institute for Brain Research
+            </span>
+            <span class="badge exp-date">
+              September 2025 – Present
+            </span>
+          </div>
+          <div class="exp-role">
+            Research Assistant, Ed Boyden Lab
+          </div>
+          <div class="exp-desc">
+            Deep learning–based segmentation and AI tools for large-scale biological imaging workflows.
+          </div>
+        </li>
 
-      <div class="exp-item">
-        <div class="exp-header">
-          <div class="exp-org">
-            Massachusetts Institute of Technology, McGovern Institute for Brain Research
+        <li class="exp-item">
+          <div class="exp-header">
+            <span class="item-title">
+              Boston College, Department of Computer Science
+            </span>
+            <span class="badge exp-date">
+              May 2025 – Present
+            </span>
           </div>
-          <div class="exp-date">
-            September 2025 – Present
+          <div class="exp-role">
+            Undergraduate Research Fellow, Donglai Wei Lab
           </div>
-        </div>
-        <div class="exp-role">
-          Research Assistant, Ed Boyden Lab
-        </div>
-        <div class="exp-desc">
-          Deep learning–based segmentation and AI tools for large-scale biological imaging workflows.
-        </div>
-      </div>
-
-      <div class="exp-item">
-        <div class="exp-header">
-          <div class="exp-org">
-            Boston College, Department of Computer Science
+          <div class="exp-desc">
+            Mitochondria instance segmentation, data preprocessing pipelines, and HPC workflow optimization.
           </div>
-          <div class="exp-date">
-            May 2025 – Present
-          </div>
-        </div>
-        <div class="exp-role">
-          Undergraduate Research Fellow, Donglai Wei Lab
-        </div>
-        <div class="exp-desc">
-          Mitochondria instance segmentation, data preprocessing pipelines, and HPC workflow optimization.
-        </div>
-      </div>
+        </li>
+      </ul>
     </section>
 
     <section class="card section" aria-labelledby="edu-title">
