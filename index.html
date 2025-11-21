@@ -95,6 +95,13 @@
       margin-top: 4px;
     }
 
+    /* Small divider line */
+    .sub-divider {
+      border: 0;
+      border-top: 1px solid var(--border);
+      margin: 6px 0 10px;
+    }
+
     /* Anchor offset to account for sticky nav */
     .anchor-offset {
       position: relative;
@@ -173,14 +180,7 @@
       <ul class="list">
         <li>
           <span class="item-title">Boston College</span> — B.A. in Computer Science & Mathematics
-          <span class="badge">August 2022 – May 2026</span><br />
-          <div class="muted">Relevant courses:
-            <ul class="list">
-              <li><span class="item-title">Computer Science:</span> Computer Systems, Data Science: Methods and Applications, Natural Language Processing, Databases, Software Engineering, Deep Learning, Algorithms, Computability and Computational Complexity, Generative AI: Mathematics and Applications, Biomedical Image Analysis.</li>
-              <li><span class="item-title">Mathematics:</span> Multivariable Calculus, Linear Algebra, Mathematical Foundations of Data Science, Differential Equations, Probability, Mathematical Statistics, Number Theory, Combinatorics, Advanced Data Analysis, Introduction to Abstract Algebra, Introduction to Analysis.</li>
-              <li><span class="item-title">Other related:</span> Econometric Methods, Machine Learning for Economics, Management Science.</li>
-            </ul>
-          </div>
+          <span class="badge">August 2022 – May 2026</span>
         </li>
       </ul>
     </section>
@@ -256,6 +256,8 @@
     <section class="card section" aria-labelledby="coursework-title">
       <div id="coursework" class="anchor-offset" aria-hidden="true"></div>
       <h2 id="coursework-title" class="section-title">Coursework</h2>
+      <hr class="sub-divider" />
+      <p class="muted"><span class="item-title">Undergraduate:</span></p>
       <div class="muted">
         <p><span class="item-title">Computer Science:</span></p>
         <ul class="list course-columns">
@@ -293,6 +295,9 @@
           <li>Management Science</li>
         </ul>
       </div>
+
+      <hr class="sub-divider" />
+      <p class="muted"><span class="item-title">Graduate:</span></p>
     </section>
 
     <!-- Links -->
