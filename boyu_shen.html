@@ -63,7 +63,7 @@
     .grid { display: grid; gap: 16px; }
     @media (min-width: 860px) { .grid-2 { grid-template-columns: repeat(2,1fr); } }
 
-    /* Experience layout (matches overall style; uses bullets + badge) */
+    /* Experience layout */
     .exp-item {
       margin-bottom: 14px;
     }
@@ -75,6 +75,7 @@
       flex-wrap: wrap;
     }
     .exp-date {
+      color: var(--muted);
       white-space: nowrap;
     }
     .exp-role {
@@ -153,7 +154,7 @@
       </p>
     </section>
 
-    <!-- Experience (now using bullets + consistent style) -->
+    <!-- Experience -->
     <section class="card section" aria-labelledby="exp-title">
       <div id="experience" class="anchor-offset" aria-hidden="true"></div>
       <h2 id="exp-title" class="section-title">Experience</h2>
@@ -168,10 +169,12 @@
             </span>
           </div>
           <div class="exp-role">
-            Research Assistant in Ed Boyden Lab (Synthetic Neurobiology Group):
+            Research Assistant in Ed Boyden Lab (Synthetic Neurobiology Group)
           </div>
           <div class="exp-desc">
-            2D C. elegans Segmentation from EM Videos.
+            <ul class="list">
+              <li>2D C. elegans Segmentation from EM Videos.</li>
+            </ul>
           </div>
         </li>
 
@@ -185,15 +188,18 @@
             </span>
           </div>
           <div class="exp-role">
-            Undergraduate Research Fellow in Donglai Wei Lab:
+            Undergraduate Research Fellow in Donglai Wei Lab
           </div>
           <div class="exp-desc">
-            3D Mitochondria Instance Segmentation from EM Images.
+            <ul class="list">
+              <li>3D Mitochondria Instance Segmentation from EM Images.</li>
+            </ul>
           </div>
         </li>
       </ul>
     </section>
 
+    <!-- Education -->
     <section class="card section" aria-labelledby="edu-title">
       <div id="education" class="anchor-offset" aria-hidden="true"></div>
       <h2 id="edu-title" class="section-title">Education</h2>
@@ -212,12 +218,14 @@
       </ul>
     </section>
 
+    <!-- Projects -->
     <section class="card section" aria-labelledby="projects-title">
       <div id="projects" class="anchor-offset" aria-hidden="true"></div>
       <h2 id="projects-title" class="section-title">Projects</h2>
       <div class="grid grid-2"></div>
     </section>
 
+    <!-- Publications -->
     <section class="card section" aria-labelledby="pubs-title">
       <div id="publications" class="anchor-offset" aria-hidden="true"></div>
       <h2 id="pubs-title" class="section-title">Publications</h2>
@@ -232,6 +240,7 @@
       </ol>
     </section>
 
+    <!-- Links -->
     <section class="card section" aria-labelledby="links-title">
       <div id="links" class="anchor-offset" aria-hidden="true"></div>
       <h2 id="links-title" class="section-title">Links</h2>
