@@ -63,26 +63,9 @@
     .grid { display: grid; gap: 16px; }
     @media (min-width: 860px) { .grid-2 { grid-template-columns: repeat(2,1fr); } }
 
-    /* Experience custom bullets + layout */
-    .exp-list {
-      list-style: none;
-      padding-left: 0;
-      margin: 0;
-    }
+    /* Experience layout (matches overall style; uses bullets + badge) */
     .exp-item {
-      position: relative;
-      padding-left: 22px;
-      margin-bottom: 16px;
-    }
-    .exp-item::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 10px;
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      border: 2px solid var(--muted); /* outlined disk bullet */
+      margin-bottom: 14px;
     }
     .exp-header {
       display: flex;
@@ -92,8 +75,6 @@
       flex-wrap: wrap;
     }
     .exp-date {
-      font-size: 13px;
-      color: var(--muted);
       white-space: nowrap;
     }
     .exp-role {
@@ -172,17 +153,17 @@
       </p>
     </section>
 
-    <!-- Experience -->
+    <!-- Experience (now using bullets + consistent style) -->
     <section class="card section" aria-labelledby="exp-title">
       <div id="experience" class="anchor-offset" aria-hidden="true"></div>
       <h2 id="exp-title" class="section-title">Experience</h2>
-      <ul class="exp-list">
+      <ul class="list">
         <li class="exp-item">
           <div class="exp-header">
             <span class="item-title">
               Massachusetts Institute of Technology, McGovern Institute for Brain Research
             </span>
-            <span class="exp-date">
+            <span class="badge exp-date">
               September 2025 – Present
             </span>
           </div>
@@ -199,7 +180,7 @@
             <span class="item-title">
               Boston College, Department of Computer Science
             </span>
-            <span class="exp-date">
+            <span class="badge exp-date">
               May 2025 – Present
             </span>
           </div>
@@ -213,7 +194,6 @@
       </ul>
     </section>
 
-    <!-- Education -->
     <section class="card section" aria-labelledby="edu-title">
       <div id="education" class="anchor-offset" aria-hidden="true"></div>
       <h2 id="edu-title" class="section-title">Education</h2>
