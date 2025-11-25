@@ -15,9 +15,7 @@
       --accent: #38bdf8;  /* sky-400 */
     }
     * { box-sizing: border-box; }
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0; color: var(--text); background: var(--bg);
       font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
@@ -28,22 +26,37 @@
     a:hover { text-decoration: underline; }
 
     /* Top navigation */
-    .nav { position: sticky; top: 0; z-index: 20; backdrop-filter: blur(10px);
-           background: rgba(15,23,42,.65); border-bottom: 1px solid var(--border); }
-    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; }
+    .nav {
+      position: sticky; top: 0; z-index: 20; backdrop-filter: blur(10px);
+      background: rgba(15,23,42,.65); border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto; padding: 10px 20px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
     .nav-links a { color: var(--text); opacity: .9; margin: 0 10px; font-size: 15px; }
     .brand { font-weight: 700; letter-spacing: .3px; }
 
     /* Hero with background image */
-    .hero { position: relative; min-height: 62vh; display: flex; align-items: center; justify-content: center;
-            background-image: url('backgroundImage.avif'); /* BACKGROUND_URL */
-            background-size: cover; background-position: center; }
-    .hero::after { content: ""; position: absolute; inset: 0; background:
-                   linear-gradient(180deg, rgba(15,23,42,.35) 0%, rgba(15,23,42,.85) 85%); }
-    .hero-content { position: relative; z-index: 1; max-width: 1100px; width: 100%; padding: 40px 24px; display: grid; grid-template-columns: 1fr; gap: 24px; }
+    .hero {
+      position: relative; min-height: 62vh; display: flex; align-items: center; justify-content: center;
+      background-image: url('backgroundImage.avif'); /* BACKGROUND_URL */
+      background-size: cover; background-position: center;
+    }
+    .hero::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(15,23,42,.35) 0%, rgba(15,23,42,.85) 85%);
+    }
+    .hero-content {
+      position: relative; z-index: 1; max-width: 1100px; width: 100%;
+      padding: 40px 24px; display: grid; grid-template-columns: 1fr; gap: 24px;
+    }
     .hero-row { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
-    .portrait { width: 160px; height: 160px; border-radius: 9999px; object-fit: cover; border: 3px solid rgba(255,255,255,.9);
-                box-shadow: 0 14px 34px rgba(0,0,0,.45); background: #111827; }
+    .portrait {
+      width: 160px; height: 160px; border-radius: 9999px; object-fit: cover;
+      border: 3px solid rgba(255,255,255,.9); box-shadow: 0 14px 34px rgba(0,0,0,.45);
+      background: #111827;
+    }
     h1 { margin: 0 0 6px; font-size: clamp(28px, 4vw, 44px); line-height: 1.15; }
     .nickname { color: var(--muted); font-weight: 500; font-size: 0.75em; }
     .tagline { margin-top: 6px; color: var(--muted); max-width: 70ch; }
@@ -53,65 +66,36 @@
     /* Sections */
     .container { max-width: 1100px; margin: -40px auto 64px; padding: 0 24px; }
     .section { margin-top: 24px; }
-    .card { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 24px; backdrop-filter: blur(6px);
-            box-shadow: 0 10px 26px rgba(0,0,0,.28); }
+    .card {
+      background: var(--panel); border: 1px solid var(--border); border-radius: 16px;
+      padding: 24px; backdrop-filter: blur(6px); box-shadow: 0 10px 26px rgba(0,0,0,.28);
+    }
     .section-title { margin: 0 0 14px; font-size: 20px; letter-spacing: .3px; }
     .muted { color: var(--muted); }
     .list { margin: 0; padding-left: 18px; }
     .item-title { font-weight: 650; }
-    .badge { display: inline-block; font-size: 12px; color: #0b1220; background: var(--accent); border-radius: 999px; padding: 2px 8px; margin-left: 6px; }
+    .badge {
+      display: inline-block; font-size: 12px; color: #0b1220;
+      background: var(--accent); border-radius: 999px; padding: 2px 8px; margin-left: 6px;
+    }
     .grid { display: grid; gap: 16px; }
     @media (min-width: 860px) { .grid-2 { grid-template-columns: repeat(2,1fr); } }
 
     /* Experience layout */
-    .exp-item {
-      margin-bottom: 14px;
-    }
+    .exp-item { margin-bottom: 14px; }
     .exp-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 12px;
-      flex-wrap: wrap;
+      display: flex; justify-content: space-between; align-items: baseline;
+      gap: 12px; flex-wrap: wrap;
     }
-    .exp-date {
-      color: var(--muted);
-      white-space: nowrap;
-    }
-    .exp-role {
-      color: var(--muted);
-      margin-top: 2px;
-    }
-    .exp-desc {
-      color: var(--muted);
-      margin-top: 2px;
-      font-size: 0.95rem;
-    }
+    .exp-date { color: var(--muted); white-space: nowrap; }
+    .exp-role { color: var(--muted); margin-top: 2px; }
+    .exp-desc { color: var(--muted); margin-top: 2px; font-size: 0.95rem; }
 
     /* Publications styling */
     .pub-list { margin: 0; padding-left: 24px; }
     .pub-item { margin-bottom: 10px; }
     .pub-title { font-style: italic; }
-    .pub-meta {
-      margin-top: 4px;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-    .pub-tag {
-      /* Old pill vibe, but no box: just accent, uppercase, tracking */
-      display: inline;
-      padding: 0;
-      border: none;
-      background: transparent;
-      color: var(--accent);
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: .06em;
-      font-weight: 600;
-    }
+    .pub-venue { color: var(--muted); }
 
     /* Coursework columns */
     .course-columns {
@@ -128,21 +112,18 @@
     }
 
     /* Coursework labels */
-    .coursework-label {
-      margin: 10px 0;
-    }
+    .coursework-label { margin: 10px 0; }
 
     /* Anchor offset to account for sticky nav */
     .anchor-offset {
-      position: relative;
-      top: -80px;
-      display: block;
-      height: 0;
-      visibility: hidden;
+      position: relative; top: -80px; display: block; height: 0; visibility: hidden;
     }
 
     /* Footer */
-    .footer { text-align: center; color: var(--muted); padding: 36px 16px; border-top: 1px solid var(--border); }
+    .footer {
+      text-align: center; color: var(--muted);
+      padding: 36px 16px; border-top: 1px solid var(--border);
+    }
   </style>
 </head>
 <body>
@@ -226,9 +207,7 @@
             <span class="item-title">
               Massachusetts Institute of Technology McGovern Institute for Brain Research
             </span>
-            <span class="exp-date">
-              September 2025 – Present
-            </span>
+            <span class="exp-date">September 2025 – Present</span>
           </div>
           <div class="exp-role">
             Research Assistant in <a href="https://synthneuro.org/" target="_blank" rel="noopener">Ed Boyden Lab</a> (Synthetic Neurobiology Group)
@@ -245,9 +224,7 @@
             <span class="item-title">
               Boston College Department of Computer Science
             </span>
-            <span class="exp-date">
-              May 2025 – Present
-            </span>
+            <span class="exp-date">May 2025 – Present</span>
           </div>
           <div class="exp-role">
             Undergraduate Research Fellow in <a href="https://donglaiw.github.io/" target="_blank" rel="noopener">Donglai Wei Lab</a>
@@ -279,10 +256,8 @@
           <span class="pub-title">
             MitoEM 2.0 – A Benchmark for Challenging 3D Mitochondria Instance Segmentation from EM Images
           </span>.
-          <span class="pub-meta">
-            <span class="pub-tag">bioRxiv preprint · 2025</span>
-            <a href="https://doi.org/10.1101/2025.11.12.687478" target="_blank" rel="noopener">bioRxiv</a>
-          </span>
+          <span class="pub-venue">bioRxiv preprint, 2025.</span>
+          <a href="https://doi.org/10.1101/2025.11.12.687478" target="_blank" rel="noopener">bioRxiv</a>
         </li>
       </ol>
     </section>
