@@ -17,9 +17,11 @@
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      margin: 0; color: var(--text); background: var(--bg);
-      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
-                   "Apple Color Emoji", "Segoe UI Emoji";
+      margin: 0;
+      color: var(--text);
+      background: var(--bg);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+                   "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
       line-height: 1.6;
     }
     a { color: var(--accent); text-decoration: none; }
@@ -27,34 +29,71 @@
 
     /* Top navigation */
     .nav {
-      position: sticky; top: 0; z-index: 20; backdrop-filter: blur(10px);
-      background: rgba(15,23,42,.65); border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(10px);
+      background: rgba(15,23,42,.65);
+      border-bottom: 1px solid var(--border);
     }
     .nav-inner {
-      max-width: 1100px; margin: 0 auto; padding: 10px 20px;
-      display: flex; align-items: center; justify-content: space-between;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
-    .nav-links a { color: var(--text); opacity: .9; margin: 0 10px; font-size: 15px; }
+    .nav-links a {
+      color: var(--text);
+      opacity: .9;
+      margin: 0 10px;
+      font-size: 15px;
+    }
     .brand { font-weight: 700; letter-spacing: .3px; }
 
     /* Hero with background image */
     .hero {
-      position: relative; min-height: 62vh; display: flex; align-items: center; justify-content: center;
+      position: relative;
+      min-height: 62vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       background-image: url('backgroundImage.avif'); /* BACKGROUND_URL */
-      background-size: cover; background-position: center;
+      background-size: cover;
+      background-position: center;
     }
     .hero::after {
-      content: ""; position: absolute; inset: 0;
-      background: linear-gradient(180deg, rgba(15,23,42,.35) 0%, rgba(15,23,42,.85) 85%);
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg,
+                  rgba(15,23,42,.35) 0%,
+                  rgba(15,23,42,.85) 85%);
     }
     .hero-content {
-      position: relative; z-index: 1; max-width: 1100px; width: 100%;
-      padding: 40px 24px; display: grid; grid-template-columns: 1fr; gap: 24px;
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      width: 100%;
+      padding: 40px 24px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
     }
-    .hero-row { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+    .hero-row {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
     .portrait {
-      width: 160px; height: 160px; border-radius: 9999px; object-fit: cover;
-      border: 3px solid rgba(255,255,255,.9); box-shadow: 0 14px 34px rgba(0,0,0,.45);
+      width: 160px;
+      height: 160px;
+      border-radius: 9999px;
+      object-fit: cover;
+      border: 3px solid rgba(255,255,255,.9);
+      box-shadow: 0 14px 34px rgba(0,0,0,.45);
       background: #111827;
     }
     h1 { margin: 0 0 6px; font-size: clamp(28px, 4vw, 44px); line-height: 1.15; }
@@ -64,19 +103,32 @@
     .icon { width: 22px; height: 22px; display: inline-block; vertical-align: middle; fill: currentColor; }
 
     /* Sections */
-    .container { max-width: 1100px; margin: -40px auto 64px; padding: 0 24px; }
+    .container {
+      max-width: 1100px;
+      margin: -40px auto 64px;
+      padding: 0 24px;
+    }
     .section { margin-top: 24px; }
     .card {
-      background: var(--panel); border: 1px solid var(--border); border-radius: 16px;
-      padding: 24px; backdrop-filter: blur(6px); box-shadow: 0 10px 26px rgba(0,0,0,.28);
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 10px 26px rgba(0,0,0,.28);
     }
     .section-title { margin: 0 0 14px; font-size: 20px; letter-spacing: .3px; }
     .muted { color: var(--muted); }
     .list { margin: 0; padding-left: 18px; }
     .item-title { font-weight: 650; }
     .badge {
-      display: inline-block; font-size: 12px; color: #0b1220;
-      background: var(--accent); border-radius: 999px; padding: 2px 8px; margin-left: 6px;
+      display: inline-block;
+      font-size: 12px;
+      color: #0b1220;
+      background: var(--accent);
+      border-radius: 999px;
+      padding: 2px 8px;
+      margin-left: 6px;
     }
     .grid { display: grid; gap: 16px; }
     @media (min-width: 860px) { .grid-2 { grid-template-columns: repeat(2,1fr); } }
@@ -84,33 +136,15 @@
     /* Experience layout */
     .exp-item { margin-bottom: 14px; }
     .exp-header {
-      display: flex; justify-content: space-between; align-items: baseline;
-      gap: 12px; flex-wrap: wrap;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      flex-wrap: wrap;
     }
     .exp-date { color: var(--muted); white-space: nowrap; }
     .exp-role { color: var(--muted); margin-top: 2px; }
     .exp-desc { color: var(--muted); margin-top: 2px; font-size: 0.95rem; }
-
-    /* Publications styling */
-    .pub-list { margin: 0; padding-left: 24px; }
-    .pub-item { margin-bottom: 10px; }
-    .pub-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 12px;
-    }
-    .pub-main { flex: 1; min-width: 0; }
-    .pub-title { font-style: italic; }
-    .pub-meta {
-      font-size: 0.85rem;
-      color: var(--muted);
-      white-space: nowrap;
-    }
-    .pub-links {
-      margin-top: 2px;
-      font-size: 0.9rem;
-    }
 
     /* Coursework columns */
     .course-columns {
@@ -126,18 +160,29 @@
       margin: 10px 0;
     }
 
-    /* Coursework labels */
     .coursework-label { margin: 10px 0; }
+
+    /* Publication meta text (inline, same size, slightly muted) */
+    .pub-meta {
+      color: var(--muted);
+      margin-left: 8px;
+    }
 
     /* Anchor offset to account for sticky nav */
     .anchor-offset {
-      position: relative; top: -80px; display: block; height: 0; visibility: hidden;
+      position: relative;
+      top: -80px;
+      display: block;
+      height: 0;
+      visibility: hidden;
     }
 
     /* Footer */
     .footer {
-      text-align: center; color: var(--muted);
-      padding: 36px 16px; border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--muted);
+      padding: 36px 16px;
+      border-top: 1px solid var(--border);
     }
   </style>
 </head>
@@ -164,7 +209,7 @@
         <div>
           <h1>Boyu Shen 申博宇<span class="nickname">(a.k.a. Ethan)</span></h1>
           <p class="tagline">
-            CS & Math @ Boston College • Biomedical Image Analysis • RA @ BC
+            CS &amp; Math @ Boston College • Biomedical Image Analysis • RA @ BC
             <a href="https://donglaiw.github.io/" target="_blank" rel="noopener">Donglai Wei Lab</a>
             &amp; MIT
             <a href="https://synthneuro.org/" target="_blank" rel="noopener">Ed Boyden Lab</a>.
@@ -192,11 +237,13 @@
   </section>
 
   <main class="container" role="main">
+    <!-- About -->
     <section class="card section" aria-labelledby="about-title">
       <div id="about" class="anchor-offset" aria-hidden="true"></div>
       <h2 id="about-title" class="section-title">About</h2>
       <p>
-        I am a CS & Math student at Boston College focusing on Computer Vision, Biomedical Image Analysis, and Applied Machine Learning.
+        I am a CS &amp; Math student at Boston College focusing on Computer Vision,
+        Biomedical Image Analysis, and Applied Machine Learning.
       </p>
     </section>
 
@@ -206,7 +253,7 @@
       <h2 id="edu-title" class="section-title">Education</h2>
       <ul class="list">
         <li>
-          <span class="item-title">Boston College</span> — B.A. in Computer Science & Mathematics
+          <span class="item-title">Boston College</span> — B.A. in Computer Science &amp; Mathematics
           <span class="badge">August 2022 – May 2026</span>
         </li>
       </ul>
@@ -257,30 +304,23 @@
     <section class="card section" aria-labelledby="projects-title">
       <div id="projects" class="anchor-offset" aria-hidden="true"></div>
       <h2 id="projects-title" class="section-title">Projects</h2>
-      <div class="grid grid-2"></div>
+      <div class="grid grid-2">
+        <!-- Add project cards here when ready -->
+      </div>
     </section>
 
     <!-- Publications -->
     <section class="card section" aria-labelledby="pubs-title">
       <div id="publications" class="anchor-offset" aria-hidden="true"></div>
       <h2 id="pubs-title" class="section-title">Publications</h2>
-      <ol class="pub-list">
-        <li class="pub-item">
-          <div class="pub-row">
-            <div class="pub-main">
-              Peng Liu, <strong>Boyu Shen</strong>, Liyuan Liu, Qiong Wang, Shulin Zhang, Abhishek Bhardwaj,
-              Ignacio Arganda-Carreras, Kedar Narayan, and Donglai Wei.
-              <span class="pub-title">
-                MitoEM 2.0 – A Benchmark for Challenging 3D Mitochondria Instance Segmentation from EM Images
-              </span>.
-            </div>
-            <div class="pub-meta">
-              bioRxiv preprint, 2025
-            </div>
-          </div>
-          <div class="pub-links">
-            — <a href="https://doi.org/10.1101/2025.11.12.687478" target="_blank" rel="noopener">bioRxiv</a>
-          </div>
+      <ol class="list">
+        <li>
+          Peng Liu, <strong>Boyu Shen</strong>, Liyuan Liu, Qiong Wang, Shulin Zhang,
+          Abhishek Bhardwaj, Ignacio Arganda-Carreras, Kedar Narayan, and Donglai Wei.
+          <em>MitoEM 2.0 – A Benchmark for Challenging 3D Mitochondria Instance Segmentation from EM Images</em>.
+          <span class="pub-meta">bioRxiv preprint, 2025</span>
+          <br />
+          — <a href="https://doi.org/10.1101/2025.11.12.687478" target="_blank" rel="noopener">bioRxiv</a>
         </li>
       </ol>
     </section>
@@ -289,13 +329,15 @@
     <section class="card section" aria-labelledby="coursework-title">
       <div id="coursework" class="anchor-offset" aria-hidden="true"></div>
       <h2 id="coursework-title" class="section-title">Coursework</h2>
+
       <hr class="sub-divider" />
       <p class="muted coursework-label"><span class="item-title">Undergraduate:</span></p>
+
       <div class="muted">
         <p><span class="item-title">Computer Science:</span></p>
         <ul class="list course-columns">
           <li>CSCI1101 Computer Science I (Programming in Python)</li>
-          <li>CSCI1102 Computer Sycience II (Data Structures and Algorithms in Java)</li>
+          <li>CSCI1102 Computer Science II (Data Structures and Algorithms in Java)</li>
           <li>CSCI2271 Computer Systems</li>
           <li>CSCI2272 Computer Organization and Lab</li>
           <li>CSCI2291 Data Science: Methods and Applications</li>
@@ -335,6 +377,7 @@
 
       <hr class="sub-divider" />
       <p class="muted coursework-label"><span class="item-title">Graduate:</span></p>
+      <!-- Add graduate coursework here when applicable -->
     </section>
 
     <!-- Links -->
@@ -342,10 +385,13 @@
       <div id="links" class="anchor-offset" aria-hidden="true"></div>
       <h2 id="links-title" class="section-title">Links</h2>
       <p>
-        Find me on <a href="https://www.linkedin.com/in/boyu-shen-bb381026a" target="_blank" rel="noopener">LinkedIn</a>,
+        Find me on
+        <a href="https://www.linkedin.com/in/boyu-shen-bb381026a" target="_blank" rel="noopener">LinkedIn</a>,
         <a href="https://scholar.google.com/citations?hl=en&user=KE-7g1cAAAAJ" target="_blank" rel="noopener">Google Scholar</a>,
-        and <a href="https://github.com/BoyuShen2004" target="_blank" rel="noopener">GitHub</a>.
-        You can also reach me at [first_name].[last_name].2004@gmail.com (written this way to avoid webscrapers).
+        and
+        <a href="https://github.com/BoyuShen2004" target="_blank" rel="noopener">GitHub</a>.
+        You can also reach me at [first_name].[last_name].2004@gmail.com
+        (written this way to avoid webscrapers).
       </p>
     </section>
   </main>
