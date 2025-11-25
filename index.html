@@ -50,7 +50,10 @@
       margin: 0 10px;
       font-size: 15px;
     }
-    .brand { font-weight: 700; letter-spacing: .3px; }
+    .brand {
+      font-weight: 700;
+      letter-spacing: .3px;
+    }
 
     /* Hero with background image */
     .hero {
@@ -96,11 +99,34 @@
       box-shadow: 0 14px 34px rgba(0,0,0,.45);
       background: #111827;
     }
-    h1 { margin: 0 0 6px; font-size: clamp(28px, 4vw, 44px); line-height: 1.15; }
-    .nickname { color: var(--muted); font-weight: 500; font-size: 0.75em; }
-    .tagline { margin-top: 6px; color: var(--muted); max-width: 70ch; }
-    .socials { display: flex; gap: 14px; align-items: center; margin-top: 10px; }
-    .icon { width: 22px; height: 22px; display: inline-block; vertical-align: middle; fill: currentColor; }
+    h1 {
+      margin: 0 0 6px;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.15;
+    }
+    .nickname {
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 0.75em;
+    }
+    .tagline {
+      margin-top: 6px;
+      color: var(--muted);
+      max-width: 70ch;
+    }
+    .socials {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      margin-top: 10px;
+    }
+    .icon {
+      width: 22px;
+      height: 22px;
+      display: inline-block;
+      vertical-align: middle;
+      fill: currentColor;
+    }
 
     /* Sections */
     .container {
@@ -117,7 +143,11 @@
       backdrop-filter: blur(6px);
       box-shadow: 0 10px 26px rgba(0,0,0,.28);
     }
-    .section-title { margin: 0 0 14px; font-size: 20px; letter-spacing: .3px; }
+    .section-title {
+      margin: 0 0 14px;
+      font-size: 20px;
+      letter-spacing: .3px;
+    }
     .muted { color: var(--muted); }
     .list { margin: 0; padding-left: 18px; }
     .item-title { font-weight: 650; }
@@ -133,7 +163,7 @@
     .grid { display: grid; gap: 16px; }
     @media (min-width: 860px) { .grid-2 { grid-template-columns: repeat(2,1fr); } }
 
-    /* Experience layout */
+    /* Experience */
     .exp-item { margin-bottom: 14px; }
     .exp-header {
       display: flex;
@@ -142,9 +172,19 @@
       gap: 12px;
       flex-wrap: wrap;
     }
-    .exp-date { color: var(--muted); white-space: nowrap; }
-    .exp-role { color: var(--muted); margin-top: 2px; }
-    .exp-desc { color: var(--muted); margin-top: 2px; font-size: 0.95rem; }
+    .exp-date {
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .exp-role {
+      color: var(--muted);
+      margin-top: 2px;
+    }
+    .exp-desc {
+      color: var(--muted);
+      margin-top: 2px;
+      font-size: 0.95rem;
+    }
 
     /* Coursework columns */
     .course-columns {
@@ -153,22 +193,54 @@
       margin: 4px 0 0;
     }
 
-    /* Small divider line */
+    /* Divider line */
     .sub-divider {
       border: 0;
       border-top: 1px solid var(--border);
       margin: 10px 0;
     }
-
     .coursework-label { margin: 10px 0; }
 
-    /* Publication meta text (inline, same size, slightly muted) */
-    .pub-meta {
+    /* Publications styling */
+    .pub-list {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .pub-item {
+      margin-bottom: 10px;
+    }
+    .pub-citation {
+      /* inherits normal body size */
+    }
+    .pub-meta-row {
+      font-size: 0.9rem;
       color: var(--muted);
-      margin-left: 8px;
+      margin-top: 2px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+    .pub-meta-main {
+      font-style: italic;
+    }
+    .pub-tags {
+      margin-top: 4px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .pub-tag {
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      padding: 1px 8px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
     }
 
-    /* Anchor offset to account for sticky nav */
+    /* Anchor offset for sticky nav */
     .anchor-offset {
       position: relative;
       top: -80px;
@@ -272,11 +344,13 @@
             <span class="exp-date">September 2025 – Present</span>
           </div>
           <div class="exp-role">
-            Research Assistant in <a href="https://synthneuro.org/" target="_blank" rel="noopener">Ed Boyden Lab</a> (Synthetic Neurobiology Group)
+            Research Assistant in
+            <a href="https://synthneuro.org/" target="_blank" rel="noopener">Ed Boyden Lab</a>
+            (Synthetic Neurobiology Group)
           </div>
           <div class="exp-desc">
             <ul class="list">
-              <li>2D C. elegans Segmentation from EM Videos.</li>
+              <li>2D <em>C. elegans</em> segmentation from EM videos.</li>
             </ul>
           </div>
         </li>
@@ -289,39 +363,51 @@
             <span class="exp-date">May 2025 – Present</span>
           </div>
           <div class="exp-role">
-            Undergraduate Research Fellow in <a href="https://donglaiw.github.io/" target="_blank" rel="noopener">Donglai Wei Lab</a>
+            Undergraduate Research Fellow in
+            <a href="https://donglaiw.github.io/" target="_blank" rel="noopener">Donglai Wei Lab</a>
           </div>
           <div class="exp-desc">
             <ul class="list">
-              <li>3D Mitochondria Instance Segmentation from EM Images.</li>
+              <li>3D mitochondria instance segmentation from EM images.</li>
             </ul>
           </div>
         </li>
       </ul>
     </section>
 
-    <!-- Projects -->
+    <!-- Projects (placeholder) -->
     <section class="card section" aria-labelledby="projects-title">
       <div id="projects" class="anchor-offset" aria-hidden="true"></div>
       <h2 id="projects-title" class="section-title">Projects</h2>
-      <div class="grid grid-2">
-        <!-- Add project cards here when ready -->
-      </div>
+      <div class="grid grid-2"></div>
     </section>
 
-    <!-- Publications -->
+    <!-- Publications with enhanced styling -->
     <section class="card section" aria-labelledby="pubs-title">
       <div id="publications" class="anchor-offset" aria-hidden="true"></div>
       <h2 id="pubs-title" class="section-title">Publications</h2>
-      <ol class="list">
-        <li>
-          Peng Liu, <strong>Boyu Shen</strong>, Liyuan Liu, Qiong Wang, Shulin Zhang,
-          Abhishek Bhardwaj, Ignacio Arganda-Carreras, Kedar Narayan, and Donglai Wei.
-          <em>MitoEM 2.0 – A Benchmark for Challenging 3D Mitochondria Instance Segmentation from EM Images</em>.
-          <span class="pub-meta">
-            bioRxiv preprint, 2025 —
-            <a href="https://doi.org/10.1101/2025.11.12.687478" target="_blank" rel="noopener">bioRxiv</a>.
-          </span>
+
+      <ol class="pub-list">
+        <li class="pub-item">
+          <div class="pub-citation">
+            Peng Liu, <strong>Boyu Shen</strong>, Liyuan Liu, Qiong Wang, Shulin Zhang,
+            Abhishek Bhardwaj, Ignacio Arganda-Carreras, Kedar Narayan, and Donglai Wei.
+            <em>MitoEM 2.0 – A Benchmark for Challenging 3D Mitochondria Instance Segmentation from EM Images</em>.
+          </div>
+
+          <div class="pub-meta-row">
+            <span class="pub-meta-main">bioRxiv preprint, 2025</span>
+            <span class="pub-links">
+              — <a href="https://doi.org/10.1101/2025.11.12.687478"
+                   target="_blank" rel="noopener">bioRxiv</a>
+            </span>
+          </div>
+
+          <div class="pub-tags">
+            <span class="pub-tag">Benchmark</span>
+            <span class="pub-tag">3D EM</span>
+            <span class="pub-tag">Instance Segmentation</span>
+          </div>
         </li>
       </ol>
     </section>
@@ -378,7 +464,6 @@
 
       <hr class="sub-divider" />
       <p class="muted coursework-label"><span class="item-title">Graduate:</span></p>
-      <!-- Add graduate coursework here when applicable -->
     </section>
 
     <!-- Links -->
@@ -392,7 +477,7 @@
         and
         <a href="https://github.com/BoyuShen2004" target="_blank" rel="noopener">GitHub</a>.
         You can also reach me at [first_name].[last_name].2004@gmail.com
-        (written this way to avoid webscrapers).
+        (written this way to avoid web scrapers).
       </p>
     </section>
   </main>
