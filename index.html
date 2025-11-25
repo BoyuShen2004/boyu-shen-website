@@ -201,16 +201,13 @@
     }
     .coursework-label { margin: 10px 0; }
 
-    /* Publications styling */
+    /* Publications styling (minimal) */
     .pub-list {
       margin: 0;
       padding-left: 18px;
     }
     .pub-item {
       margin-bottom: 10px;
-    }
-    .pub-citation {
-      /* inherits normal body size */
     }
     .pub-meta-row {
       font-size: 0.9rem;
@@ -220,24 +217,6 @@
       flex-wrap: wrap;
       gap: 8px;
       align-items: center;
-    }
-    .pub-meta-main {
-      font-style: italic;
-    }
-    .pub-tags {
-      margin-top: 4px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-    .pub-tag {
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      padding: 1px 8px;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--muted);
     }
 
     /* Anchor offset for sticky nav */
@@ -382,22 +361,22 @@
       <div class="grid grid-2"></div>
     </section>
 
-    <!-- Publications with enhanced styling -->
+    <!-- Publications -->
     <section class="card section" aria-labelledby="pubs-title">
       <div id="publications" class="anchor-offset" aria-hidden="true"></div>
       <h2 id="pubs-title" class="section-title">Publications</h2>
 
       <ol class="pub-list">
         <li class="pub-item">
-          <div class="pub-citation">
+          <div>
             Peng Liu, <strong>Boyu Shen</strong>, Liyuan Liu, Qiong Wang, Shulin Zhang,
             Abhishek Bhardwaj, Ignacio Arganda-Carreras, Kedar Narayan, and Donglai Wei.
             <em>MitoEM 2.0 – A Benchmark for Challenging 3D Mitochondria Instance Segmentation from EM Images</em>.
           </div>
 
           <div class="pub-meta-row">
-            <span class="pub-meta-main">bioRxiv preprint, 2025</span>
-            <span class="pub-links">
+            <span>bioRxiv preprint, 2025</span>
+            <span>
               — <a href="https://doi.org/10.1101/2025.11.12.687478"
                    target="_blank" rel="noopener">bioRxiv</a>
             </span>
