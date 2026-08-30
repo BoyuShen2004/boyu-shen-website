@@ -204,16 +204,24 @@
       gap: 12px;
       flex-wrap: wrap;
     }
-    .edu-meta {
-      display: grid;
-      gap: 2px;
-      text-align: right;
-    }
     .exp-date, .project-date, .edu-date {
       color: var(--muted);
       white-space: nowrap;
     }
     .exp-role, .project-role, .edu-role {
+      color: var(--muted);
+      margin-top: 2px;
+    }
+    .edu-detail {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 2px;
+    }
+    .edu-detail .edu-role { margin-top: 0; }
+    .edu-concentration {
       color: var(--muted);
       margin-top: 2px;
     }
@@ -395,22 +403,23 @@
       <div class="edu-item">
         <div class="edu-header">
           <span class="item-title">Georgia Institute of Technology, College of Computing</span>
-          <span class="edu-meta">
-            <span class="edu-date">August 2026 – May 2028</span>
-            <span class="edu-date">Atlanta, GA</span>
-          </span>
+          <span class="edu-date">August 2026 – May 2028</span>
         </div>
-        <div class="edu-role">M.S., Computer Science, with a concentration in Computing Systems</div>
+        <div class="edu-detail">
+          <span class="edu-role">M.S. in Computer Science</span>
+          <span class="edu-date">Atlanta, GA</span>
+        </div>
+        <div class="edu-concentration">Concentration: Computing Systems</div>
       </div>
       <div class="edu-item">
         <div class="edu-header">
           <span class="item-title">Boston College, Morrissey College of Arts and Sciences</span>
-          <span class="edu-meta">
-            <span class="edu-date">August 2022 – May 2026</span>
-            <span class="edu-date">Chestnut Hill, MA</span>
-          </span>
+          <span class="edu-date">August 2022 – May 2026</span>
         </div>
-        <div class="edu-role">B.A., Double Major in Computer Science and Mathematics</div>
+        <div class="edu-detail">
+          <span class="edu-role">B.A. in Computer Science and Mathematics (Double Major)</span>
+          <span class="edu-date">Chestnut Hill, MA</span>
+        </div>
       </div>
     </section>
 
