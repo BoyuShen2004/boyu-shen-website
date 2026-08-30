@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Personal Website</title>
-  <meta name="description" content="" />
+  <title>Boyu Shen — Personal Website</title>
+  <meta name="description" content="Boyu Shen is an M.S. student in Computer Science at Georgia Tech specializing in Computing Systems, with interests in machine learning systems, AI infrastructure, and computer vision." />
 
   <style>
     :root {
@@ -30,7 +30,7 @@
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    .identity-bar {
+    .nav {
       position: sticky;
       top: 0;
       z-index: 20;
@@ -38,45 +38,31 @@
       background: rgba(255,255,255,.82);
       border-bottom: 1px solid var(--border);
     }
-    .identity-inner {
+    .nav-inner {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 8px 20px;
+      padding: 10px 20px;
       display: flex;
       align-items: center;
-      gap: 11px;
+      justify-content: space-between;
+      gap: 18px;
     }
-    .identity-image {
-      width: 44px;
-      height: 44px;
-      flex: 0 0 44px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid rgba(255,255,255,.95);
-      box-shadow: 0 2px 8px rgba(15,23,42,.16);
-      background: #e2e8f0;
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 4px;
     }
-    .identity-copy {
-      min-width: 0;
-      line-height: 1.25;
-    }
-    .identity-name {
-      font-weight: 700;
-      letter-spacing: .3px;
+    .nav-links a {
+      color: var(--text);
+      opacity: .9;
+      margin: 0 8px;
       font-size: 15px;
     }
-    .identity-nickname {
-      color: var(--muted);
-      font-weight: 500;
-      margin-left: 5px;
-    }
-    .identity-headline {
-      color: var(--muted);
-      font-size: 13px;
-      margin-top: 2px;
+    .brand {
+      font-weight: 700;
+      letter-spacing: .3px;
       white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
 
     .hero {
@@ -360,36 +346,38 @@
     }
 
     @media (max-width: 720px) {
-      .identity-inner { padding: 7px 14px; }
-      .identity-image { width: 40px; height: 40px; flex-basis: 40px; }
-      .identity-headline {
-        display: -webkit-box;
-        white-space: normal;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-      }
+      .nav-inner { align-items: flex-start; flex-direction: column; }
+      .nav-links { justify-content: flex-start; }
       .course-list-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-  <header class="identity-bar" role="banner">
-    <div class="identity-inner">
-      <img class="identity-image" data-profile-image alt="" />
-      <div class="identity-copy">
-        <div class="identity-name"><span data-profile-name></span><span class="identity-nickname" data-profile-nickname></span></div>
-        <div class="identity-headline" data-profile-headline></div>
-      </div>
+  <header class="nav" role="banner">
+    <div class="nav-inner">
+      <div class="brand">Boyu Shen</div>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#publications">Publications</a>
+        <a href="#coursework">Coursework</a>
+        <a href="#skills">Skills</a>
+        <a href="#links">Links</a>
+      </nav>
     </div>
   </header>
 
   <section class="hero" role="img" aria-label="Background image">
     <div class="hero-content">
       <div class="hero-row">
-        <img class="portrait" data-profile-image alt="" />
+        <img class="portrait" src="portrait_image.jpg" alt="Portrait of Boyu Shen" />
         <div>
-          <h1><span data-profile-name></span><span class="nickname" data-profile-nickname></span></h1>
-          <p class="tagline" data-profile-headline></p>
+          <h1>Boyu Shen 申博宇<span class="nickname">(Ethan)</span></h1>
+          <p class="tagline">
+            M.S. student in Computer Science at Georgia Tech, specializing in Computing Systems and interested in machine learning systems, AI infrastructure, and computer vision.
+          </p>
           <div class="socials" aria-label="Social links">
             <a class="pill-link" href="https://www.linkedin.com/in/boyu-shen-bb381026a" target="_blank" rel="noopener">LinkedIn</a>
             <a class="pill-link" href="https://scholar.google.com/citations?hl=en&amp;user=KE-7g1cAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
@@ -638,30 +626,5 @@
     <p>© 2026 Boyu Shen. All rights reserved.</p>
   </footer>
 
-  <script>
-    const profileData = Object.freeze({
-      image: "portrait_image.jpg",
-      name: "Boyu Shen 申博宇",
-      nickname: "(Ethan)",
-      headline: "M.S. student in Computer Science at Georgia Tech, specializing in Computing Systems and interested in machine learning systems, AI infrastructure, and computer vision."
-    });
-
-    document.title = `${profileData.name} — Personal Website`;
-    document.querySelector('meta[name="description"]').content = `${profileData.name} — ${profileData.headline}`;
-
-    document.querySelectorAll("[data-profile-image]").forEach((image) => {
-      image.src = profileData.image;
-      image.alt = `Portrait of ${profileData.name}`;
-    });
-    document.querySelectorAll("[data-profile-name]").forEach((element) => {
-      element.textContent = profileData.name;
-    });
-    document.querySelectorAll("[data-profile-nickname]").forEach((element) => {
-      element.textContent = profileData.nickname;
-    });
-    document.querySelectorAll("[data-profile-headline]").forEach((element) => {
-      element.textContent = profileData.headline;
-    });
-  </script>
 </body>
 </html>
