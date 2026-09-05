@@ -229,6 +229,16 @@
       color: var(--muted);
       margin-top: 6px;
     }
+    .project-thumb {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: contain;
+      background: rgba(15,23,42,.03);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 12px;
+    }
     .tags {
       display: flex;
       gap: 8px;
@@ -472,6 +482,7 @@
       <h2 id="projects-title" class="section-title">Selected Projects</h2>
       <div class="grid grid-2">
         <article class="project-item">
+          <img class="project-thumb" src="worm_skeletonization.png" alt="C. elegans body mask with extracted centerline and keypoints overlaid on a behavioral video frame" loading="lazy" />
           <div class="project-header">
             <span class="item-title">C. elegans Video Segmentation and Skeletonization</span>
             <span class="project-date">Synthetic Neurobiology Group</span>
@@ -481,6 +492,7 @@
         </article>
 
         <article class="project-item">
+          <img class="project-thumb" src="mitoem2.jpg" alt="MitoEM 2.0 benchmark: 3D mitochondria instance segmentation across diverse EM datasets" loading="lazy" />
           <div class="project-header">
             <span class="item-title"><a href="https://doi.org/10.1101/2025.11.12.687478" target="_blank" rel="noopener">MitoEM 2.0 Benchmark</a></span>
             <span class="project-date">Donglai Wei Lab</span>
@@ -490,6 +502,7 @@
         </article>
 
         <article class="project-item">
+          <img class="project-thumb" src="cellmap.jpg" alt="CellMap segmentation challenge: multi-class 3D organelle segmentation results" loading="lazy" />
           <div class="project-header">
             <span class="item-title"><a href="https://cellmapchallenge.janelia.org/leaderboard" target="_blank" rel="noopener">CellMap Segmentation Challenge</a></span>
             <span class="project-date">HHMI Janelia</span>
@@ -499,6 +512,7 @@
         </article>
 
         <article class="project-item">
+          <img class="project-thumb" src="seg-bio.jpg" alt="Research-agent architecture routing user messages through supervisor, training, and inference agents backed by a FAISS index" loading="lazy" />
           <div class="project-header">
             <span class="item-title">AI-Assisted Research Tooling</span>
             <span class="project-date">Donglai Wei Lab</span>
@@ -508,6 +522,7 @@
         </article>
 
         <article class="project-item">
+          <img class="project-thumb" src="mito-data-studio.jpg" alt="Mito Data Studio annotation interface showing SAM2-assisted labeling, 3D label view, and task management" loading="lazy" />
           <div class="project-header">
             <span class="item-title"><a href="https://github.com/BoyuShen2004/mito-data-studio" target="_blank" rel="noopener">Mito Data Studio</a></span>
             <span class="project-date">Donglai Wei Lab</span>
