@@ -1,10 +1,22 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Boyu Shen — Personal Website</title>
   <meta name="description" content="Boyu Shen is an M.S. student in Computer Science at Georgia Tech specializing in Computing Systems, with interests in machine learning systems, AI infrastructure, and computer vision." />
+  <script>
+    // Apply the saved language before render to avoid a flash of both languages.
+    (function () {
+      try {
+        var l = localStorage.getItem('lang');
+        if (l === 'zh' || l === 'en') {
+          document.documentElement.setAttribute('data-lang', l);
+          document.documentElement.setAttribute('lang', l === 'zh' ? 'zh-CN' : 'en');
+        }
+      } catch (e) {}
+    })();
+  </script>
 
   <style>
     :root {
@@ -64,6 +76,37 @@
       letter-spacing: .3px;
       white-space: nowrap;
     }
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .lang-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 3px 10px;
+      background: rgba(255,255,255,.85);
+    }
+    .lang-btn {
+      border: 0;
+      background: none;
+      cursor: pointer;
+      font: inherit;
+      font-size: 14px;
+      color: var(--muted);
+      padding: 0 3px;
+      line-height: 1.5;
+    }
+    .lang-btn:hover { color: var(--text); }
+    .lang-btn.active { color: var(--accent); font-weight: 700; }
+    .lang-sep { color: var(--border); user-select: none; }
+
+    /* Language visibility: driven by data-lang on <html>. English is the default. */
+    [data-lang="en"] .lang-zh { display: none !important; }
+    [data-lang="zh"] .lang-en { display: none !important; }
 
     .hero {
       position: relative;
@@ -365,16 +408,23 @@
 <body>
   <header class="nav" role="banner">
     <div class="nav-inner">
-      <div class="brand">Boyu Shen</div>
+      <div class="nav-left">
+        <div class="lang-switch" role="group" aria-label="Language / 语言">
+          <button type="button" class="lang-btn" data-lang-btn="en">EN</button>
+          <span class="lang-sep">|</span>
+          <button type="button" class="lang-btn" data-lang-btn="zh">中</button>
+        </div>
+        <div class="brand">Boyu Shen</div>
+      </div>
       <nav class="nav-links" aria-label="Primary">
-        <a href="#about">About</a>
-        <a href="#education">Education</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#publications">Publications</a>
-        <a href="#coursework">Coursework</a>
-        <a href="#skills">Skills</a>
-        <a href="#links">Links</a>
+        <a href="#about"><span class="lang-en">About</span><span class="lang-zh">关于</span></a>
+        <a href="#education"><span class="lang-en">Education</span><span class="lang-zh">教育</span></a>
+        <a href="#experience"><span class="lang-en">Experience</span><span class="lang-zh">经历</span></a>
+        <a href="#projects"><span class="lang-en">Projects</span><span class="lang-zh">项目</span></a>
+        <a href="#publications"><span class="lang-en">Publications</span><span class="lang-zh">论文</span></a>
+        <a href="#coursework"><span class="lang-en">Coursework</span><span class="lang-zh">课程</span></a>
+        <a href="#skills"><span class="lang-en">Skills</span><span class="lang-zh">技能</span></a>
+        <a href="#links"><span class="lang-en">Links</span><span class="lang-zh">链接</span></a>
       </nav>
     </div>
   </header>
@@ -385,8 +435,11 @@
         <img class="portrait" src="portrait_image.jpg" alt="Portrait of Boyu Shen" />
         <div>
           <h1>Boyu Shen 申博宇<span class="nickname">(Ethan)</span></h1>
-          <p class="tagline">
+          <p class="tagline lang-en">
             M.S. student in Computer Science at Georgia Tech, specializing in Computing Systems and interested in machine learning systems, AI infrastructure, and computer vision.
+          </p>
+          <p class="tagline lang-zh">
+            佐治亚理工学院计算机科学硕士在读，主攻计算系统方向，主要关注机器学习系统、AI 基础设施和计算机视觉。
           </p>
           <div class="socials" aria-label="Social links">
             <a class="pill-link" href="https://www.linkedin.com/in/boyu-shen-bb381026a" target="_blank" rel="noopener">LinkedIn</a>
@@ -401,145 +454,180 @@
   <main class="container" role="main">
     <section class="card section" aria-labelledby="about-title">
       <div id="about" class="anchor-offset" aria-hidden="true"></div>
-      <h2 id="about-title" class="section-title">About</h2>
-      <p>
+      <h2 id="about-title" class="section-title"><span class="lang-en">About</span><span class="lang-zh">关于</span></h2>
+      <p class="lang-en">
         I am currently pursuing an M.S. in Computer Science at the Georgia Institute of Technology, specializing in Computing Systems, following my undergraduate studies at Boston College, where I earned a B.A. in Computer Science and Mathematics.
       </p>
-      <p>
+      <p class="lang-zh">
+        我目前在佐治亚理工学院读计算机科学硕士，方向为计算系统；本科毕业于波士顿学院，修读计算机科学与数学双专业，获文学学士学位。
+      </p>
+      <p class="lang-en">
         My interests lie at the intersection of AI/ML systems, computer vision, and applied machine learning. I am particularly interested in building efficient, scalable, and reliable systems for modern AI workloads, as well as developing computer-vision and learning-based methods for scientific and biomedical applications.
       </p>
-      <p>
+      <p class="lang-zh">
+        我的研究兴趣集中在 AI/ML 系统、计算机视觉和应用机器学习的交叉方向。我尤其希望为现代 AI 工作负载构建高效、可扩展且稳定可靠的系统，同时也在尝试用计算机视觉和机器学习的方法，解决科学与生物医学中的实际问题。
+      </p>
+      <p class="lang-en">
         Through my research, I have worked on deep learning, image segmentation, biomedical imaging, large-scale image analysis, research software, and AI-assisted annotation tools. These experiences motivate my broader interest in machine learning systems and AI infrastructure that make data-intensive applications more efficient and practical. I am interested in connecting with researchers and engineers in these areas and in related research and internship opportunities.
+      </p>
+      <p class="lang-zh">
+        在过往的研究中，我接触过深度学习、图像分割、生物医学成像、大规模图像分析、科研软件开发，以及 AI 辅助标注工具。这些经历让我越来越关注机器学习系统与 AI 基础设施，也就是如何让数据密集型的应用运行得更高效、更实用。我很期待与相关方向的研究者和工程师交流，也欢迎相关的研究与实习机会。
       </p>
     </section>
 
     <section class="card section" aria-labelledby="edu-title">
       <div id="education" class="anchor-offset" aria-hidden="true"></div>
-      <h2 id="edu-title" class="section-title">Education</h2>
+      <h2 id="edu-title" class="section-title"><span class="lang-en">Education</span><span class="lang-zh">教育经历</span></h2>
       <div class="edu-item">
         <div class="edu-header">
-          <span class="item-title">Georgia Institute of Technology, College of Computing</span>
-          <span class="edu-date">August 2026 – May 2028</span>
+          <span class="item-title"><span class="lang-en">Georgia Institute of Technology, College of Computing</span><span class="lang-zh">佐治亚理工学院 计算学院</span></span>
+          <span class="edu-date"><span class="lang-en">August 2026 – May 2028</span><span class="lang-zh">2026 年 8 月 – 2028 年 5 月</span></span>
         </div>
         <div class="edu-detail">
-          <span class="edu-role">M.S. in Computer Science</span>
-          <span class="edu-date">Atlanta, GA</span>
+          <span class="edu-role"><span class="lang-en">M.S. in Computer Science</span><span class="lang-zh">计算机科学硕士</span></span>
+          <span class="edu-date"><span class="lang-en">Atlanta, GA</span><span class="lang-zh">美国佐治亚州亚特兰大</span></span>
         </div>
-        <div class="edu-specialization">Specialization: Computing Systems</div>
+        <div class="edu-specialization"><span class="lang-en">Specialization: Computing Systems</span><span class="lang-zh">研究方向：计算系统</span></div>
       </div>
       <div class="edu-item">
         <div class="edu-header">
-          <span class="item-title">Boston College, Morrissey College of Arts and Sciences</span>
-          <span class="edu-date">August 2022 – May 2026</span>
+          <span class="item-title"><span class="lang-en">Boston College, Morrissey College of Arts and Sciences</span><span class="lang-zh">波士顿学院 莫里西文理学院</span></span>
+          <span class="edu-date"><span class="lang-en">August 2022 – May 2026</span><span class="lang-zh">2022 年 8 月 – 2026 年 5 月</span></span>
         </div>
         <div class="edu-detail">
-          <span class="edu-role">B.A. in Computer Science and Mathematics (Double Major)</span>
-          <span class="edu-date">Chestnut Hill, MA</span>
+          <span class="edu-role"><span class="lang-en">B.A. in Computer Science and Mathematics (Double Major)</span><span class="lang-zh">计算机科学与数学双专业 文学学士</span></span>
+          <span class="edu-date"><span class="lang-en">Chestnut Hill, MA</span><span class="lang-zh">美国马萨诸塞州栗树山</span></span>
         </div>
       </div>
     </section>
 
     <section class="card section" aria-labelledby="exp-title">
       <div id="experience" class="anchor-offset" aria-hidden="true"></div>
-      <h2 id="exp-title" class="section-title">Experience</h2>
+      <h2 id="exp-title" class="section-title"><span class="lang-en">Experience</span><span class="lang-zh">研究与工作经历</span></h2>
       <div class="exp-item">
         <div class="exp-header">
-          <span class="item-title">Massachusetts Institute of Technology, McGovern Institute for Brain Research</span>
-          <span class="exp-date">September 2025 – Present</span>
+          <span class="item-title"><span class="lang-en">Massachusetts Institute of Technology, McGovern Institute for Brain Research</span><span class="lang-zh">麻省理工学院 麦戈文脑科学研究所</span></span>
+          <span class="exp-date"><span class="lang-en">September 2025 – Present</span><span class="lang-zh">2025 年 9 月 – 至今</span></span>
         </div>
-        <div class="exp-role">Research Collaborator, <a href="https://synthneuro.org/" target="_blank" rel="noopener">Synthetic Neurobiology Group (Ed Boyden Lab)</a></div>
-        <div class="exp-desc">
+        <div class="exp-role lang-en">Research Collaborator, <a href="https://synthneuro.org/" target="_blank" rel="noopener">Synthetic Neurobiology Group (Ed Boyden Lab)</a></div>
+        <div class="exp-role lang-zh">研究合作者，<a href="https://synthneuro.org/" target="_blank" rel="noopener">合成神经生物学组（Ed Boyden 实验室）</a></div>
+        <div class="exp-desc lang-en">
           Develop computer-vision pipelines for <em>C. elegans</em> behavioral video segmentation and skeletonization, producing body masks and centerlines for downstream posture, locomotion, and neural-activity analysis.
         </div>
-        <div class="tags"><span class="tag">computer vision</span><span class="tag">video analysis</span><span class="tag">pose estimation</span><span class="tag">research software</span></div>
+        <div class="exp-desc lang-zh">
+          为<em>秀丽隐杆线虫</em>（C. elegans）的行为视频搭建分割与骨架提取的计算机视觉流程，生成身体掩膜与中心线，为后续的姿态、运动及神经活动分析提供支持。
+        </div>
+        <div class="tags lang-en"><span class="tag">computer vision</span><span class="tag">video analysis</span><span class="tag">pose estimation</span><span class="tag">research software</span></div>
+        <div class="tags lang-zh"><span class="tag">计算机视觉</span><span class="tag">视频分析</span><span class="tag">姿态估计</span><span class="tag">研究软件</span></div>
       </div>
 
       <div class="exp-item">
         <div class="exp-header">
-          <span class="item-title">Boston College, Department of Computer Science</span>
-          <span class="exp-date">May 2025 – Present</span>
+          <span class="item-title"><span class="lang-en">Boston College, Department of Computer Science</span><span class="lang-zh">波士顿学院 计算机科学系</span></span>
+          <span class="exp-date"><span class="lang-en">May 2025 – Present</span><span class="lang-zh">2025 年 5 月 – 至今</span></span>
         </div>
-        <div class="exp-role">Undergraduate Research Fellow, <a href="https://donglaiw.github.io/" target="_blank" rel="noopener">Donglai Wei Lab</a></div>
-        <div class="exp-desc">
+        <div class="exp-role lang-en">Undergraduate Research Fellow, <a href="https://donglaiw.github.io/" target="_blank" rel="noopener">Donglai Wei Lab</a></div>
+        <div class="exp-role lang-zh">本科研究员，<a href="https://donglaiw.github.io/" target="_blank" rel="noopener">Donglai Wei 实验室</a></div>
+        <div class="exp-desc lang-en">
           Work on deep-learning segmentation, scalable preprocessing/inference pipelines, and AI-assisted research tooling for large image datasets with Professor Donglai Wei, postdoctoral researcher Peng Liu, and lab collaborators.
         </div>
-        <div class="tags"><span class="tag">deep learning</span><span class="tag">computer vision</span><span class="tag">large-scale image analysis</span><span class="tag">HPC workflows</span></div>
+        <div class="exp-desc lang-zh">
+          与 Donglai Wei 教授、博士后 Peng Liu 及实验室同事合作，围绕大规模图像数据集开展深度学习分割、可扩展的预处理与推理流程，以及 AI 辅助科研工具的开发。
+        </div>
+        <div class="tags lang-en"><span class="tag">deep learning</span><span class="tag">computer vision</span><span class="tag">large-scale image analysis</span><span class="tag">HPC workflows</span></div>
+        <div class="tags lang-zh"><span class="tag">深度学习</span><span class="tag">计算机视觉</span><span class="tag">大规模图像分析</span><span class="tag">高性能计算工作流</span></div>
       </div>
 
       <div class="exp-item">
         <div class="exp-header">
-          <span class="item-title">Boston College Carroll School of Management</span>
-          <span class="exp-date">July 2024 – May 2025</span>
+          <span class="item-title"><span class="lang-en">Boston College, Department of Accounting</span><span class="lang-zh">波士顿学院 会计系</span></span>
+          <span class="exp-date"><span class="lang-en">July 2024 – May 2025</span><span class="lang-zh">2024 年 7 月 – 2025 年 5 月</span></span>
         </div>
-        <div class="exp-role">Research and Teaching Assistant</div>
-        <div class="exp-desc">Built applied machine-learning teaching materials and data/NLP workflows for reproducible classroom demonstrations and research support.</div>
+        <div class="exp-role lang-en">Research and Teaching Assistant</div>
+        <div class="exp-role lang-zh">研究助理兼助教</div>
+        <div class="exp-desc lang-en">Built applied machine-learning teaching materials and data/NLP workflows for reproducible classroom demonstrations and research support.</div>
+        <div class="exp-desc lang-zh">编写应用机器学习相关的教学材料，并搭建数据处理与自然语言处理流程，用于可复现的课堂演示和科研支持。</div>
       </div>
 
     </section>
 
     <section class="card section" aria-labelledby="projects-title">
       <div id="projects" class="anchor-offset" aria-hidden="true"></div>
-      <h2 id="projects-title" class="section-title">Selected Projects</h2>
+      <h2 id="projects-title" class="section-title"><span class="lang-en">Selected Projects</span><span class="lang-zh">精选项目</span></h2>
       <div class="grid grid-2">
         <article class="project-item">
           <img class="project-thumb" src="worm_skeletonization.png" alt="C. elegans body mask with extracted centerline and keypoints overlaid on a behavioral video frame" loading="lazy" />
           <div class="project-header">
-            <span class="item-title">C. elegans Video Segmentation and Skeletonization</span>
-            <span class="project-date">Synthetic Neurobiology Group</span>
+            <span class="item-title"><span class="lang-en">C. elegans Video Segmentation and Skeletonization</span><span class="lang-zh">秀丽隐杆线虫视频分割与骨架提取</span></span>
+            <span class="project-date"><span class="lang-en">Synthetic Neurobiology Group</span><span class="lang-zh">合成神经生物学组</span></span>
           </div>
-          <div class="project-desc">Computer-vision pipeline for extracting analysis-ready worm masks and centerlines from behavioral video frames.</div>
-          <div class="tags"><span class="tag">video segmentation</span><span class="tag">skeletonization</span><span class="tag">centerline extraction</span><span class="tag">pose quantification</span></div>
+          <div class="project-desc lang-en">Computer-vision pipeline for extracting analysis-ready worm masks and centerlines from behavioral video frames.</div>
+          <div class="project-desc lang-zh">一套计算机视觉流程，从行为视频帧中提取可直接用于分析的线虫掩膜与中心线。</div>
+          <div class="tags lang-en"><span class="tag">video segmentation</span><span class="tag">skeletonization</span><span class="tag">centerline extraction</span><span class="tag">pose quantification</span></div>
+          <div class="tags lang-zh"><span class="tag">视频分割</span><span class="tag">骨架提取</span><span class="tag">中心线提取</span><span class="tag">姿态量化</span></div>
         </article>
 
         <article class="project-item">
           <img class="project-thumb" src="mitoem2.jpg" alt="MitoEM 2.0 benchmark: 3D mitochondria instance segmentation across diverse EM datasets" loading="lazy" />
           <div class="project-header">
-            <span class="item-title"><a href="https://doi.org/10.1101/2025.11.12.687478" target="_blank" rel="noopener">MitoEM 2.0 Benchmark</a></span>
-            <span class="project-date">Donglai Wei Lab</span>
+            <span class="item-title"><a href="https://doi.org/10.1101/2025.11.12.687478" target="_blank" rel="noopener"><span class="lang-en">MitoEM 2.0 Benchmark</span><span class="lang-zh">MitoEM 2.0 基准</span></a></span>
+            <span class="project-date"><span class="lang-en">Donglai Wei Lab</span><span class="lang-zh">Donglai Wei 实验室</span></span>
           </div>
-          <div class="project-desc">Co-authored benchmark work on challenging 3D instance segmentation, model evaluation, and reproducible large-volume inference.</div>
-          <div class="tags"><span class="tag">instance segmentation</span><span class="tag">benchmark evaluation</span><span class="tag">large-volume inference</span></div>
+          <div class="project-desc lang-en">Co-authored benchmark work on challenging 3D instance segmentation, model evaluation, and reproducible large-volume inference.</div>
+          <div class="project-desc lang-zh">参与合著的基准研究，聚焦高难度的三维实例分割、模型评测以及可复现的大规模推理。</div>
+          <div class="tags lang-en"><span class="tag">instance segmentation</span><span class="tag">benchmark evaluation</span><span class="tag">large-volume inference</span></div>
+          <div class="tags lang-zh"><span class="tag">实例分割</span><span class="tag">基准评测</span><span class="tag">大体量推理</span></div>
         </article>
 
         <article class="project-item">
           <img class="project-thumb" src="cellmap.jpg" alt="CellMap segmentation challenge: multi-class 3D organelle segmentation results" loading="lazy" />
           <div class="project-header">
-            <span class="item-title"><a href="https://cellmapchallenge.janelia.org/leaderboard" target="_blank" rel="noopener">CellMap Segmentation Challenge</a></span>
-            <span class="project-date">HHMI Janelia</span>
+            <span class="item-title"><a href="https://cellmapchallenge.janelia.org/leaderboard" target="_blank" rel="noopener"><span class="lang-en">CellMap Segmentation Challenge</span><span class="lang-zh">CellMap 分割挑战赛</span></a></span>
+            <span class="project-date"><span class="lang-en">HHMI Janelia</span><span class="lang-zh">HHMI Janelia</span></span>
           </div>
-          <div class="project-desc">Contributed to Donglai Wei Lab's BC_CV first-place non-admin leaderboard submission for multi-class 3D segmentation.</div>
-          <div class="tags"><span class="tag">semantic segmentation</span><span class="tag">instance segmentation</span><span class="tag">model benchmarking</span></div>
+          <div class="project-desc lang-en">Contributed to Donglai Wei Lab's BC_CV first-place non-admin leaderboard submission for multi-class 3D segmentation.</div>
+          <div class="project-desc lang-zh">参与 Donglai Wei 实验室 BC_CV 团队的方案，在多类别三维分割排行榜的非管理员组中取得第一名。</div>
+          <div class="tags lang-en"><span class="tag">semantic segmentation</span><span class="tag">instance segmentation</span><span class="tag">model benchmarking</span></div>
+          <div class="tags lang-zh"><span class="tag">语义分割</span><span class="tag">实例分割</span><span class="tag">模型基准测试</span></div>
         </article>
 
         <article class="project-item">
           <img class="project-thumb" src="seg-bio.jpg" alt="Research-agent architecture routing user messages through supervisor, training, and inference agents backed by a FAISS index" loading="lazy" />
           <div class="project-header">
-            <span class="item-title">AI-Assisted Research Tooling</span>
-            <span class="project-date">Donglai Wei Lab</span>
+            <span class="item-title"><span class="lang-en">AI-Assisted Research Tooling</span><span class="lang-zh">AI 辅助研究工具</span></span>
+            <span class="project-date"><span class="lang-en">Donglai Wei Lab</span><span class="lang-zh">Donglai Wei 实验室</span></span>
           </div>
-          <div class="project-desc">Prototype research-agent workflows that translate natural-language experiment requests into dataset setup, model configuration, inference, and result management.</div>
-          <div class="tags"><span class="tag">LLM agents</span><span class="tag">experiment automation</span><span class="tag">PyTorch Connectomics</span><span class="tag">research software</span></div>
+          <div class="project-desc lang-en">Prototype research-agent workflows that translate natural-language experiment requests into dataset setup, model configuration, inference, and result management.</div>
+          <div class="project-desc lang-zh">研究型智能体工作流原型，可将自然语言描述的实验需求，自动转化为数据集准备、模型配置、推理与结果管理。</div>
+          <div class="tags lang-en"><span class="tag">LLM agents</span><span class="tag">experiment automation</span><span class="tag">PyTorch Connectomics</span><span class="tag">research software</span></div>
+          <div class="tags lang-zh"><span class="tag">大模型智能体</span><span class="tag">实验自动化</span><span class="tag">PyTorch Connectomics</span><span class="tag">研究软件</span></div>
         </article>
 
         <article class="project-item">
           <img class="project-thumb" src="mito-data-studio.jpg" alt="Mito Data Studio annotation interface showing SAM2-assisted labeling, 3D label view, and task management" loading="lazy" />
           <div class="project-header">
             <span class="item-title"><a href="https://github.com/BoyuShen2004/mito-data-studio" target="_blank" rel="noopener">Mito Data Studio</a></span>
-            <span class="project-date">Donglai Wei Lab</span>
+            <span class="project-date"><span class="lang-en">Donglai Wei Lab</span><span class="lang-zh">Donglai Wei 实验室</span></span>
           </div>
-          <div class="project-desc">Public research software platform for large-scale mitochondria annotation workflows, from microscopy-volume registration and task assignment through label editing, review, sharing, and export, with optional EfficientSAM- and SAM2-assisted annotation.</div>
-          <div class="tags"><span class="tag">research software</span><span class="tag">annotation platform</span><span class="tag">Django / React</span><span class="tag">AI-assisted annotation</span></div>
+          <div class="project-desc lang-en">Public research software platform for large-scale mitochondria annotation workflows, from microscopy-volume registration and task assignment through label editing, review, sharing, and export, with optional EfficientSAM- and SAM2-assisted annotation.</div>
+          <div class="project-desc lang-zh">面向大规模线粒体标注的开源科研软件平台，覆盖从显微图像体配准、任务分配，到标签编辑、审核、共享与导出的完整流程，并支持使用 EfficientSAM 与 SAM2 进行辅助标注。</div>
+          <div class="tags lang-en"><span class="tag">research software</span><span class="tag">annotation platform</span><span class="tag">Django / React</span><span class="tag">AI-assisted annotation</span></div>
+          <div class="tags lang-zh"><span class="tag">研究软件</span><span class="tag">标注平台</span><span class="tag">Django / React</span><span class="tag">AI 辅助标注</span></div>
         </article>
       </div>
     </section>
 
     <section class="card section" aria-labelledby="pubs-title">
       <div id="publications" class="anchor-offset" aria-hidden="true"></div>
-      <h2 id="pubs-title" class="section-title">Publications</h2>
+      <h2 id="pubs-title" class="section-title"><span class="lang-en">Publications</span><span class="lang-zh">论文发表</span></h2>
       <div class="pub-item">
         <div class="item-title">MitoEM 2.0: A Benchmark for Challenging 3D Mitochondria Instance Segmentation from EM Images</div>
-        <div class="pub-desc">
+        <div class="pub-desc lang-en">
           Peng Liu, <strong>Boyu Shen</strong>, Liyuan Liu, Qiong Wang, Shulin Zhang, Abhishek Bhardwaj, Ignacio Arganda-Carreras, Kedar Narayan, and Donglai Wei. bioRxiv preprint, 2025.
+          <a href="https://doi.org/10.1101/2025.11.12.687478" target="_blank" rel="noopener">bioRxiv</a>
+        </div>
+        <div class="pub-desc lang-zh">
+          Peng Liu, <strong>Boyu Shen</strong>, Liyuan Liu, Qiong Wang, Shulin Zhang, Abhishek Bhardwaj, Ignacio Arganda-Carreras, Kedar Narayan, Donglai Wei。bioRxiv 预印本，2025 年。
           <a href="https://doi.org/10.1101/2025.11.12.687478" target="_blank" rel="noopener">bioRxiv</a>
         </div>
       </div>
@@ -547,24 +635,32 @@
 
     <section class="card section" aria-labelledby="coursework-title">
       <div id="coursework" class="anchor-offset" aria-hidden="true"></div>
-      <h2 id="coursework-title" class="section-title">Selected Coursework</h2>
-      <p class="muted">Coursework is organized by area and kept collapsible to save space.</p>
+      <h2 id="coursework-title" class="section-title"><span class="lang-en">Selected Coursework</span><span class="lang-zh">精选课程</span></h2>
+      <p class="muted lang-en">Coursework is organized by area and kept collapsible to save space.</p>
+      <p class="muted lang-zh">课程按方向分类，并采用可折叠形式，以节省篇幅。</p>
       <hr class="sub-divider" />
       <div class="course-details">
         <details>
-          <summary>Computer Science</summary>
+          <summary><span class="lang-en">Computer Science</span><span class="lang-zh">计算机科学</span></summary>
           <div class="course-content">
-            <p class="course-school">Georgia Institute of Technology — Fall 2026</p>
-            <ul class="list course-list-onecol">
+            <p class="course-school"><span class="lang-en">Georgia Institute of Technology — Fall 2026</span><span class="lang-zh">佐治亚理工学院 — 2026 年秋季</span></p>
+            <ul class="list course-list-onecol lang-en">
               <li>CS 3210 Design of Operating Systems</li>
               <li>CS 6222 Machine Learning Systems</li>
               <li>CS 6476 Computer Vision</li>
               <li>CS 7641 Machine Learning</li>
               <li>CS 7652 Large Language Models</li>
             </ul>
+            <ul class="list course-list-onecol lang-zh">
+              <li>CS 3210 操作系统设计</li>
+              <li>CS 6222 机器学习系统</li>
+              <li>CS 6476 计算机视觉</li>
+              <li>CS 7641 机器学习</li>
+              <li>CS 7652 大语言模型</li>
+            </ul>
 
-            <p class="course-school">Boston College</p>
-            <ul class="list course-list-onecol">
+            <p class="course-school"><span class="lang-en">Boston College</span><span class="lang-zh">波士顿学院</span></p>
+            <ul class="list course-list-onecol lang-en">
               <li>CSCI 1101 Computer Science I (Programming in Python)</li>
               <li>CSCI 1102 Computer Science II (Data Structures and Algorithms in Java)</li>
               <li>CSCI 2271 Computer Systems</li>
@@ -578,14 +674,28 @@
               <li>CSCI 3388 Generative AI: Mathematics and Applications</li>
               <li>CSCI 3397 Biomedical Image Analysis</li>
             </ul>
+            <ul class="list course-list-onecol lang-zh">
+              <li>CSCI 1101 计算机科学 I（Python 编程）</li>
+              <li>CSCI 1102 计算机科学 II（Java 数据结构与算法）</li>
+              <li>CSCI 2271 计算机系统</li>
+              <li>CSCI 2272 计算机组成与实验</li>
+              <li>CSCI 2291 数据科学：方法与应用</li>
+              <li>CSCI 3354 数据库</li>
+              <li>CSCI 3356 软件工程</li>
+              <li>CSCI 3370 深度学习</li>
+              <li>CSCI 3383 算法</li>
+              <li>CSCI 3384 / MATH 4316 可计算性与计算复杂性</li>
+              <li>CSCI 3388 生成式 AI：数学与应用</li>
+              <li>CSCI 3397 生物医学图像分析</li>
+            </ul>
           </div>
         </details>
 
         <details>
-          <summary>Mathematics</summary>
+          <summary><span class="lang-en">Mathematics</span><span class="lang-zh">数学</span></summary>
           <div class="course-content">
-            <p class="course-school">Boston College</p>
-            <ul class="list course-list-onecol">
+            <p class="course-school"><span class="lang-en">Boston College</span><span class="lang-zh">波士顿学院</span></p>
+            <ul class="list course-list-onecol lang-en">
               <li>MATH 2202 Multivariable Calculus</li>
               <li>MATH 2210 Linear Algebra</li>
               <li>MATH 2216 Introduction to Abstract Mathematics</li>
@@ -600,17 +710,37 @@
               <li>MATH 4445 Combinatorics (and Graph Theory)</li>
               <li>MATH 4465 Advanced Data Analysis</li>
             </ul>
+            <ul class="list course-list-onecol lang-zh">
+              <li>MATH 2202 多元微积分</li>
+              <li>MATH 2210 线性代数</li>
+              <li>MATH 2216 抽象数学导论</li>
+              <li>MATH 2250 数据科学的数学基础</li>
+              <li>MATH 3310 抽象代数导论</li>
+              <li>MATH 3320 分析学导论</li>
+              <li>MATH 4316 / CSCI 3384 可计算性与计算复杂性</li>
+              <li>MATH 4410 微分方程</li>
+              <li>MATH 4426 概率论</li>
+              <li>MATH 4427 数理统计</li>
+              <li>MATH 4430 数论</li>
+              <li>MATH 4445 组合数学（与图论）</li>
+              <li>MATH 4465 高级数据分析</li>
+            </ul>
           </div>
         </details>
 
         <details>
-          <summary>Other Related</summary>
+          <summary><span class="lang-en">Other Related</span><span class="lang-zh">其他相关课程</span></summary>
           <div class="course-content">
-            <p class="course-school">Boston College</p>
-            <ul class="list course-list-onecol">
+            <p class="course-school"><span class="lang-en">Boston College</span><span class="lang-zh">波士顿学院</span></p>
+            <ul class="list course-list-onecol lang-en">
               <li>ECON 2228 Econometric Methods</li>
               <li>ECON 3389 Machine Learning for Economics</li>
               <li>BZAN 6604 Management Science</li>
+            </ul>
+            <ul class="list course-list-onecol lang-zh">
+              <li>ECON 2228 计量经济学方法</li>
+              <li>ECON 3389 面向经济学的机器学习</li>
+              <li>BZAN 6604 管理科学</li>
             </ul>
           </div>
         </details>
@@ -619,10 +749,11 @@
 
     <section class="card section" aria-labelledby="skills-title">
       <div id="skills" class="anchor-offset" aria-hidden="true"></div>
-      <h2 id="skills-title" class="section-title">Skills</h2>
-      <p class="muted">Ordered by relevance to my focus on machine learning systems, AI infrastructure, and computer vision.</p>
+      <h2 id="skills-title" class="section-title"><span class="lang-en">Skills</span><span class="lang-zh">技能</span></h2>
+      <p class="muted lang-en">Ordered by relevance to my focus on machine learning systems, AI infrastructure, and computer vision.</p>
+      <p class="muted lang-zh">按照与我求职方向（机器学习系统、AI 基础设施、计算机视觉）的相关程度排序。</p>
       <hr class="sub-divider" />
-      <div class="skill-lines muted">
+      <div class="skill-lines muted lang-en">
         <p><span class="item-title">Machine Learning &amp; Computer Vision:</span> PyTorch, PyTorch Connectomics, nnU-Net v2, OpenCV, semantic segmentation, instance segmentation, skeletonization, image registration</p>
         <p><span class="item-title">ML Systems &amp; Infrastructure:</span> Linux, Docker, SLURM, GPU cluster workflows, large-volume / distributed inference, data-pipeline automation</p>
         <p><span class="item-title">Programming Languages:</span> Python, C, Bash, SQL, Java, R</p>
@@ -630,24 +761,63 @@
         <p><span class="item-title">Software &amp; Web Development:</span> Git, Django, React</p>
         <p><span class="item-title">Bioimage Tools:</span> Napari, ITK-SNAP, Neuroglancer, Cellable, TIFF / Zarr / NIfTI workflows</p>
       </div>
+      <div class="skill-lines muted lang-zh">
+        <p><span class="item-title">机器学习与计算机视觉：</span> PyTorch、PyTorch Connectomics、nnU-Net v2、OpenCV、语义分割、实例分割、骨架提取、图像配准</p>
+        <p><span class="item-title">机器学习系统与基础设施：</span> Linux、Docker、SLURM、GPU 集群工作流、大体量 / 分布式推理、数据流水线自动化</p>
+        <p><span class="item-title">编程语言：</span> Python、C、Bash、SQL、Java、R</p>
+        <p><span class="item-title">数据与数值计算：</span> NumPy、Pandas、Power BI、Tableau、Power Automate</p>
+        <p><span class="item-title">软件与 Web 开发：</span> Git、Django、React</p>
+        <p><span class="item-title">生物图像工具：</span> Napari、ITK-SNAP、Neuroglancer、Cellable、TIFF / Zarr / NIfTI 工作流</p>
+      </div>
     </section>
 
     <section class="card section" aria-labelledby="links-title">
       <div id="links" class="anchor-offset" aria-hidden="true"></div>
-      <h2 id="links-title" class="section-title">Links</h2>
-      <p>
+      <h2 id="links-title" class="section-title"><span class="lang-en">Links</span><span class="lang-zh">链接</span></h2>
+      <p class="lang-en">
         Find me on
         <a href="https://www.linkedin.com/in/boyu-shen-bb381026a" target="_blank" rel="noopener">LinkedIn</a>,
         <a href="https://scholar.google.com/citations?hl=en&amp;user=KE-7g1cAAAAJ" target="_blank" rel="noopener">Google Scholar</a>,
         and <a href="https://github.com/BoyuShen2004" target="_blank" rel="noopener">GitHub</a>.
         You can also reach me at bshen49 [at] gatech [dot] edu.
       </p>
+      <p class="lang-zh">
+        欢迎在
+        <a href="https://www.linkedin.com/in/boyu-shen-bb381026a" target="_blank" rel="noopener">LinkedIn</a>、
+        <a href="https://scholar.google.com/citations?hl=en&amp;user=KE-7g1cAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+        和 <a href="https://github.com/BoyuShen2004" target="_blank" rel="noopener">GitHub</a> 上找到我，
+        也可以通过邮箱 bshen49 [at] gatech [dot] edu 与我联系。
+      </p>
     </section>
   </main>
 
   <footer class="footer" role="contentinfo">
-    <p>© 2026 Boyu Shen. All rights reserved.</p>
+    <p class="lang-en">© 2026 Boyu Shen. All rights reserved.</p>
+    <p class="lang-zh">© 2026 申博宇。保留所有权利。</p>
   </footer>
+
+  <script>
+    // Language switch: updates <html data-lang>, persists the choice, and marks the active button.
+    (function () {
+      function apply(l) {
+        document.documentElement.setAttribute('data-lang', l);
+        document.documentElement.setAttribute('lang', l === 'zh' ? 'zh-CN' : 'en');
+        var btns = document.querySelectorAll('[data-lang-btn]');
+        for (var i = 0; i < btns.length; i++) {
+          btns[i].classList.toggle('active', btns[i].getAttribute('data-lang-btn') === l);
+        }
+      }
+      var current = document.documentElement.getAttribute('data-lang') || 'en';
+      apply(current);
+      document.addEventListener('click', function (e) {
+        var btn = e.target.closest ? e.target.closest('[data-lang-btn]') : null;
+        if (!btn) return;
+        var l = btn.getAttribute('data-lang-btn');
+        try { localStorage.setItem('lang', l); } catch (err) {}
+        apply(l);
+      });
+    })();
+  </script>
 
 </body>
 </html>
