@@ -5,19 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Boyu Shen — Personal Website</title>
   <meta name="description" content="Boyu Shen is an M.S. student in Computer Science at Georgia Tech specializing in Computing Systems, with interests in machine learning systems, AI infrastructure, and computer vision." />
-  <script>
-    // Apply the saved language before render to avoid a flash of both languages.
-    (function () {
-      try {
-        var l = localStorage.getItem('lang');
-        if (l === 'zh' || l === 'en') {
-          document.documentElement.setAttribute('data-lang', l);
-          document.documentElement.setAttribute('lang', l === 'zh' ? 'zh-CN' : 'en');
-        }
-      } catch (e) {}
-    })();
-  </script>
-
   <style>
     :root {
       --bg: #f8fafc;
@@ -795,7 +782,7 @@
   </footer>
 
   <script>
-    // Language switch: updates <html data-lang>, persists the choice, and marks the active button.
+    // Language switch: English is restored whenever the page is opened or refreshed.
     (function () {
       function apply(l) {
         document.documentElement.setAttribute('data-lang', l);
@@ -805,13 +792,11 @@
           btns[i].classList.toggle('active', btns[i].getAttribute('data-lang-btn') === l);
         }
       }
-      var current = document.documentElement.getAttribute('data-lang') || 'en';
-      apply(current);
+      apply('en');
       document.addEventListener('click', function (e) {
         var btn = e.target.closest ? e.target.closest('[data-lang-btn]') : null;
         if (!btn) return;
         var l = btn.getAttribute('data-lang-btn');
-        try { localStorage.setItem('lang', l); } catch (err) {}
         apply(l);
       });
     })();
